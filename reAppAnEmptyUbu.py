@@ -613,20 +613,20 @@ def genCmdArraySample():
     # beginning of Filezilla install mess
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  92
-    cmdArray[(cmdArrLineNum, 0)] = "Docker-choose-stable-repo"
+    cmdArray[(cmdArrLineNum, 0)] = "Filezilla-choose-stable-repo"
     cmdArray[(cmdArrLineNum, 1)] = "sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable' "   #
     cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
     cmdArray[(cmdArrLineNum, 3)] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  93
-    cmdArray[(cmdArrLineNum, 0)] = "Docker-add-gpg-key"
+    cmdArray[(cmdArrLineNum, 0)] = "Filezilla-add-gpg-key"
     cmdArray[(cmdArrLineNum, 1)] = "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"   #
     cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
     cmdArray[(cmdArrLineNum, 3)] = " "
 
-    cmdArrLineNum = cmdArrLineNum + 1  ##  93
-    cmdArray[(cmdArrLineNum, 0)] = "Docker-apt-get-install"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install docker-ce"
+    cmdArrLineNum = cmdArrLineNum + 1  ##  94
+    cmdArray[(cmdArrLineNum, 0)] = "Filezilla-apt-get-install"
+    cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install filezilla"
     cmdArray[(cmdArrLineNum, 2)] = ("UbuComplex", "NeedsPpa", "NoKey")
     cmdArray[(cmdArrLineNum, 3)] = "sudo apt-get update"
 
