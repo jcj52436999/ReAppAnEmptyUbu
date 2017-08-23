@@ -614,13 +614,13 @@ def genCmdArraySample():
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  92
     cmdArray[(cmdArrLineNum, 0)] = "Filezilla-choose-stable-repo"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable' "   #
+    cmdArray[(cmdArrLineNum, 1)] = "sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'"   #
     cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
     cmdArray[(cmdArrLineNum, 3)] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  93
     cmdArray[(cmdArrLineNum, 0)] = "Filezilla-add-gpg-key"
-    cmdArray[(cmdArrLineNum, 1)] = "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"   #
+    cmdArray[(cmdArrLineNum, 1)] = "wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -"   #
     cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
     cmdArray[(cmdArrLineNum, 3)] = " "
 
