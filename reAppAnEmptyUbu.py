@@ -249,8 +249,8 @@ def genCmdArraySample():
     cmdArray[(27, 2)] = "UbuSingleLineSimple"
     cmdArray[(27, 3)] = " "
 
-    cmdArray[(28, 0)] = "apt-get-filezilla"
-    cmdArray[(28, 1)] = "sudo -S apt-get install -y filezilla"
+    cmdArray[(28, 0)] = " "
+    cmdArray[(28, 1)] = " "
     cmdArray[(28, 2)] = "UbuSingleLineSimple"
     cmdArray[(28, 3)] = " "
 
@@ -421,7 +421,7 @@ def genCmdArraySample():
     cmdArray[(61, 2)] = " "
     cmdArray[(61, 3)] = " "
 
-    cmdArray[(62, 0)] = "apt-get-sublimetext"
+    cmdArray[(62, 0)] = " "
     cmdArray[(62, 1)] = " "
     cmdArray[(62, 2)] = " "
     cmdArray[(62, 3)] = " "
@@ -632,6 +632,37 @@ def genCmdArraySample():
 
     # end of Filezilla install mess
     ##########################################################
+
+
+    ##########################################################
+    # beginning of sublimetext install mess
+
+    cmdArrLineNum = cmdArrLineNum + 1  ##  92
+    cmdArray[(cmdArrLineNum, 0)] = "sublimetext-choose-stable-repo"
+    cmdArray[(cmdArrLineNum, 1)] = "sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list'" 
+                                   # echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
+    cmdArray[(cmdArrLineNum, 3)] = " "
+
+    cmdArrLineNum = cmdArrLineNum + 1  ##  93
+    cmdArray[(cmdArrLineNum, 0)] = "sublimetext-add-gpg-key"
+    cmdArray[(cmdArrLineNum, 1)] = "wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -"   
+                              #     wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
+    cmdArray[(cmdArrLineNum, 3)] = " "
+
+    cmdArrLineNum = cmdArrLineNum + 1  ##  94
+    cmdArray[(cmdArrLineNum, 0)] = "sublimetext-apt-get-install"
+    cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install sublime-text"
+    cmdArray[(cmdArrLineNum, 2)] = ("UbuComplex", "NeedsPpa", "NoKey")
+    cmdArray[(cmdArrLineNum, 3)] = "sudo apt-get update"
+
+    # end of sublimetext install mess
+    ##########################################################
+
+    
+    
+    
 
 
     return cmdArray
