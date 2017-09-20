@@ -8,7 +8,10 @@
 '''
 
 import sys
-
+import pickle
+import json
+import sqlite3
+import psycopg2
 
 def genaFile_cmdArrValsDotCsv():
 
@@ -614,7 +617,8 @@ def genCmdArraySample():
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  92
     cmdArray[(cmdArrLineNum, 0)] = "Filezilla-choose-stable-repo"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'"   #
+    # cmdArray[(cmdArrLineNum, 1)] = 'sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'"   
+    cmdArray[(cmdArrLineNum, 1)] =   'sudo sh -c ' + 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'   
     cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
     cmdArray[(cmdArrLineNum, 3)] = " "
 
@@ -637,21 +641,22 @@ def genCmdArraySample():
     ##########################################################
     # beginning of sublimetext install mess
 
-    cmdArrLineNum = cmdArrLineNum + 1  ##  92
+    cmdArrLineNum = cmdArrLineNum + 1  ##  95
     cmdArray[(cmdArrLineNum, 0)] = "sublimetext-choose-stable-repo"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list'" 
+    # cmdArray[(cmdArrLineNum, 1)] = "sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list'" 
                                    # echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+    cmdArray[(cmdArrLineNum, 1)] = 'sudo sh -c ' + 'echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list' 
     cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
     cmdArray[(cmdArrLineNum, 3)] = " "
 
-    cmdArrLineNum = cmdArrLineNum + 1  ##  93
+    cmdArrLineNum = cmdArrLineNum + 1  ##  96
     cmdArray[(cmdArrLineNum, 0)] = "sublimetext-add-gpg-key"
     cmdArray[(cmdArrLineNum, 1)] = "wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -"   
                               #     wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
     cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
     cmdArray[(cmdArrLineNum, 3)] = " "
 
-    cmdArrLineNum = cmdArrLineNum + 1  ##  94
+    cmdArrLineNum = cmdArrLineNum + 1  ##  97
     cmdArray[(cmdArrLineNum, 0)] = "sublimetext-apt-get-install"
     cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install sublime-text"
     cmdArray[(cmdArrLineNum, 2)] = ("UbuComplex", "NeedsPpa", "NoKey")
@@ -661,10 +666,6 @@ def genCmdArraySample():
     ##########################################################
 
     
-    
-    
-
-
     return cmdArray
 
 # sudo apt-get install libncurses5-dev libncursesw5-dev ncurses-doc
