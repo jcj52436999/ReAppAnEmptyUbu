@@ -12,6 +12,7 @@ import pickle
 import json
 import sqlite3
 import psycopg2
+import django
 
 def genaFile_cmdArrValsDotCsv():
 
