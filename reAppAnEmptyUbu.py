@@ -64,7 +64,7 @@ def genaFile_cmdArrHeadersAndValsIntoListOfDicts():
     return
 
 
-def genaFile_cmdArrValsDotTxt():
+def genaFile_cmdArrValsDotTxt():  # Gens txt file with some reversals
 
     cmdArray = genCmdArraySample()
     print("Function genCmdArraySample: ", cmdArray)
@@ -120,7 +120,7 @@ def genCmdArraySample():
 
     cmdArray[(2, 0)] = "apt-get-upgrade"
     cmdArray[(2, 1)] = "sudo -S apt-get upgrade -y"
-    cmdArray[(2, 2)] = ("UbuComplex", "GeneratesRebootReq")
+    cmdArray[(2, 2)] = ("UbuSingleLineSimple",)  # ("UbuComplex", "GeneratesRebootReq")
     cmdArray[(2, 3)] = " "
 
     cmdArray[(3, 0)] = "apt-get-autoremove"
@@ -831,6 +831,7 @@ def main(argv=None):
     print("3. Choose 3 for line by line terminal interface.")
     print("4. Choose 4 for outputting default cmdArray list to csv file.")
     print("5. Choose 5 for gen a file cmdArrVals.txt.")
+    print("6. Choose 6 to EXIT program.")
     line_choice = input("Which number do you want? ")
     line_choice = int(line_choice)
 
@@ -848,11 +849,17 @@ def main(argv=None):
         out_bytes = genaFile_cmdArrValsDotTxt()
         print( out_bytes )
         sys.exit(main())
+    elif line_choice <= 6:
+        out_bytes = "Exit program is chosen. sys.exit() "
+        print(); print( out_bytes )
+        sys.exit()
     else:
-        out_bytes = line_by_line_term_interface()
+        out_bytes = "Entry is out of range." # line_by_line_term_interface()
+        print(); print( out_bytes )
+        sys.exit(main())
 
     # out_bytes.wait()
-    print("# jcj-jcj-jcj- Function Main is ending with return: ", out_bytes)
+    print("# jcj-jcj-jcj- Function Main is ending with sys.exit(): ", out_bytes)
 
     print(" ")
     print("# jcj-jcj-jcj- END OF PROGRAM - jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj")
