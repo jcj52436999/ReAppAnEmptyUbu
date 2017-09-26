@@ -14,6 +14,31 @@ import sqlite3
 import psycopg2
 import django
 
+def screenPrintCmdArray():
+
+    cmdArray = genCmdArraySample()
+    print("Function genCmdArraySample: ", cmdArray)
+
+    ### cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
+    print()
+    for  row in range(0, 9, 1):
+
+        for column in range(0, 4, 1):
+
+            strOut = "cmdArray[(" + str(column) + ", " + str(row) + ")] = " + '"' + cmdArray[(column, row)] + '"'
+            print( strOut )
+            
+            
+            #  cmdArrValDotTxt.write(strOut + '\n')
+
+        print()
+        #  cmdArrValDotTxt.write('\n')
+
+
+    #  cmdArrValDotTxt.close()
+    print()
+    return
+
 def genaFile_cmdArrValsDotCsv():
 
     cmdArray = genCmdArraySample()
@@ -109,50 +134,50 @@ def genCmdArraySample():
 
     # array db headers
     cmdArray[(0, 0)] = "unique-name"
-    cmdArray[(0, 1)] = "command"
-    cmdArray[(0, 2)] = "cmd-properties"
-    cmdArray[(0, 3)] = "ppa"
+    cmdArray[(1, 0)] = "command"
+    cmdArray[(2, 0)] = "cmd-properties"
+    cmdArray[(3, 0)] = "ppa"
 
-    cmdArray[(1, 0)] = "apt-get-update"
+    cmdArray[(0, 1)] = "apt-get-update"
     cmdArray[(1, 1)] = "sudo -S apt-get update"
-    cmdArray[(1, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(1, 3)] = " "
+    cmdArray[(2, 1)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 1)] = " "
 
-    cmdArray[(2, 0)] = "apt-get-upgrade"
-    cmdArray[(2, 1)] = "sudo -S apt-get upgrade -y"
-    cmdArray[(2, 2)] = ("UbuSingleLineSimple",)  # ("UbuComplex", "GeneratesRebootReq")
-    cmdArray[(2, 3)] = " "
+    cmdArray[(0, 2)] = "apt-get-upgrade"
+    cmdArray[(1, 2)] = "sudo -S apt-get upgrade -y"
+    cmdArray[(2, 2)] = '("UbuSingleLineSimple",)'  # ("UbuComplex", "GeneratesRebootReq")
+    cmdArray[(3, 2)] = " "
 
-    cmdArray[(3, 0)] = "apt-get-autoremove"
-    cmdArray[(3, 1)] = "sudo -S apt-get autoremove -y"
-    cmdArray[(3, 2)] = "UbuSingleLineSimple"
+    cmdArray[(0, 3)] = "apt-get-autoremove"
+    cmdArray[(1, 3)] = "sudo -S apt-get autoremove -y"
+    cmdArray[(2, 3)] = "UbuSingleLineSimple"
     cmdArray[(3, 3)] = " "
 
-    cmdArray[(4, 0)] = "apt-get-autoclean"
-    cmdArray[(4, 1)] = "sudo -S apt-get autoclean -y"
-    cmdArray[(4, 2)] = "UbuSingleLineSimple"
-    cmdArray[(4, 3)] = " "
+    cmdArray[(0, 4)] = "apt-get-autoclean"
+    cmdArray[(2, 4)] = "sudo -S apt-get autoclean -y"
+    cmdArray[(3, 4)] = "UbuSingleLineSimple"
+    cmdArray[(4, 4)] = " "
 
-    cmdArray[(5, 0)] = "apt-get-install-git"
-    cmdArray[(5, 1)] = "sudo -S apt-get install -y git"
-    cmdArray[(5, 2)] = "UbuSingleLineSimple"
-    cmdArray[(5, 3)] = " "
+    cmdArray[(0, 5)] = "apt-get-install-git"
+    cmdArray[(1, 5)] = "sudo -S apt-get install -y git"
+    cmdArray[(2, 5)] = "UbuSingleLineSimple"
+    cmdArray[(3, 5)] = " "
 
-    cmdArray[(6, 0)] = "apt-get-install-ojava7-installer"
-    cmdArray[(6, 1)] = "sudo -S apt-get install -y oracle-java7-installer"
-    cmdArray[(6, 2)] = ("UbuComplex", "InstOfInstaller", "NeedsPpa", "NoKey")
-    cmdArray[(6, 3)] = "sudo add-apt-repository ppa:webupd8team/java"
+    cmdArray[(0, 6)] = "apt-get-install-ojava7-installer"
+    cmdArray[(1, 6)] = "sudo -S apt-get install -y oracle-java7-installer"
+    cmdArray[(2, 6)] = '("UbuComplex", "InstOfInstaller", "NeedsPpa", "NoKey")'
+    cmdArray[(3, 6)] = "sudo add-apt-repository ppa:webupd8team/java"
 
-    cmdArray[(7, 0)] = "apt-get-install-ojava8-installer"
-    cmdArray[(7, 1)] = "sudo -S apt-get install -y oracle-java8-installer"
-    cmdArray[(7, 2)] = ("UbuComplex", "InstOfInstaller", "NeedsPpa", "NoKey")
-    cmdArray[(7, 3)] = "sudo add-apt-repository ppa:webupd8team/java"
+    cmdArray[(0, 7)] = "apt-get-install-ojava8-installer"
+    cmdArray[(1, 7)] = "sudo -S apt-get install -y oracle-java8-installer"
+    cmdArray[(2, 7)] = '("UbuComplex", "InstOfInstaller", "NeedsPpa", "NoKey")'
+    cmdArray[(3, 7)] = "sudo add-apt-repository ppa:webupd8team/java"
 
-    cmdArray[(8, 0)] = "apt-get-opera-stable"
-    cmdArray[(8, 1)] = "sudo -S apt-get install -y opera-stable"
-    cmdArray[(8, 2)] = ("UbuComplex", "InstOfInstaller", "NeedsPpa", "NeedsKey")
-    cmdArray[(8, 3)] = "notSure"
-    cmdArray[(8, 4)] = " "
+    cmdArray[(0, 8)] = "apt-get-opera-stable"
+    cmdArray[(1, 8)] = "sudo -S apt-get install -y opera-stable"
+    cmdArray[(2, 8)] = '("UbuComplex", "InstOfInstaller", "NeedsPpa", "NeedsKey")'
+    cmdArray[(3, 8)] = ""
+    cmdArray[(4, 8)] = ""
 
     cmdArray[(9, 0)] = "apt-get-firefox"
     cmdArray[(9, 1)] = "sudo -S apt-get install -y firefox"
@@ -161,7 +186,7 @@ def genCmdArraySample():
 
     cmdArray[(10, 0)] = "apt-get-chrome"
     cmdArray[(10, 1)] = "sudo -S apt-get install -y google-chrome-stable"
-    cmdArray[(10, 2)] = ("UbuComplex", "InstOfInstaller", "NeedsPpa", "NeedsKey")
+    cmdArray[(10, 2)] = '("UbuComplex", "InstOfInstaller", "NeedsPpa", "NeedsKey")'
     # cmdArray[(10, 3)] = "sudo sh -c 'echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list'"  
     cmdArray[(10, 3)] = "sudo sh -c 'echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google.list'"
     cmdArray[(10, 4)] = "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
@@ -750,6 +775,8 @@ def line_by_line_term_interface():
     print("3. Choose 3 for .")
     print("4. Choose 4 for outputting default cmdArray list to csv file.")
     print("5. Choose 5 for gen a file cmdArrVals.txt.")
+    print("6. Choose 6 for return to previous menu. ")
+    print("7. Choose 7 for cmdArray screen print check. ")
     line_choice = input("Which number do you want? ")
     line_choice = int(line_choice)
 
@@ -770,6 +797,16 @@ def line_by_line_term_interface():
         out_bytes = genaFile_cmdArrValsDotTxt()
         print( out_bytes )
         sys.exit(main())
+    elif line_choice <= 6:
+        out_bytes = "User chose to return to previous menu. "
+        print(); print( out_bytes )
+        sys.exit(main())
+    elif line_choice <= 7:
+        out_bytes = "User chose to run cmdArray screen printout. "
+        print(); print( out_bytes )
+        # sys.exit(main())
+        out_bytes = screenPrintCmdArray()
+
     else:
         cmdArray = genCmdArraySample()
         print("Function genCmdArraySample: ", cmdArray)
