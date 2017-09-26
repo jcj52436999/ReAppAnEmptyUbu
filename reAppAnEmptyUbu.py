@@ -14,6 +14,8 @@ import sqlite3
 import psycopg2
 import django
 
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+# clean new SCREEN print of cmdArray
 def screenPrintCmdArray():
 
     cmdArray = genCmdArraySample()
@@ -21,7 +23,7 @@ def screenPrintCmdArray():
 
     ### cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
     print()
-    for  row in range(0, 9, 1):
+    for  row in range(0, 55, 1):
 
         for column in range(0, 4, 1):
 
@@ -38,6 +40,10 @@ def screenPrintCmdArray():
     #  cmdArrValDotTxt.close()
     print()
     return
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 def genaFile_cmdArrValsDotCsv():
 
@@ -63,6 +69,9 @@ def genaFile_cmdArrValsDotCsv():
     print()
     return
 
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 def genaFile_cmdArrHeadersAndValsIntoListOfDicts():
 
@@ -88,6 +97,9 @@ def genaFile_cmdArrHeadersAndValsIntoListOfDicts():
     print()
     return
 
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 def genaFile_cmdArrValsDotTxt():  # Gens txt file with some reversals
 
@@ -112,7 +124,7 @@ def genaFile_cmdArrValsDotTxt():  # Gens txt file with some reversals
     cmdArrValDotTxt.close()
     print()
     return
-
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the start of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # Generates as a dev default an array of apt-get command lines
@@ -179,59 +191,59 @@ def genCmdArraySample():
     cmdArray[(3, 8)] = ""
     cmdArray[(4, 8)] = ""
 
-    cmdArray[(9, 0)] = "apt-get-firefox"
-    cmdArray[(9, 1)] = "sudo -S apt-get install -y firefox"
-    cmdArray[(9, 2)] = "UbuSingleLineSimple"
-    cmdArray[(9, 3)] = " "
+    cmdArray[(0, 9)] = "apt-get-firefox"
+    cmdArray[(1, 9)] = "sudo -S apt-get install -y firefox"
+    cmdArray[(2, 9)] = "UbuSingleLineSimple"
+    cmdArray[(3, 9)] = " "
 
-    cmdArray[(10, 0)] = "apt-get-chrome"
-    cmdArray[(10, 1)] = "sudo -S apt-get install -y google-chrome-stable"
-    cmdArray[(10, 2)] = '("UbuComplex", "InstOfInstaller", "NeedsPpa", "NeedsKey")'
+    cmdArray[(0, 10)] = "apt-get-chrome"
+    cmdArray[(1, 10)] = "sudo -S apt-get install -y google-chrome-stable"
+    cmdArray[(2, 10)] = '("UbuComplex", "InstOfInstaller", "NeedsPpa", "NeedsKey")'
     # cmdArray[(10, 3)] = "sudo sh -c 'echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list'"  
-    cmdArray[(10, 3)] = "sudo sh -c 'echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google.list'"
-    cmdArray[(10, 4)] = "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
+    cmdArray[(3, 10)] = "sudo sh -c 'echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google.list'"
+    cmdArray[(4, 10)] = "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
 
-    cmdArray[(11, 0)] = "apt-get-canary"
-    cmdArray[(11, 1)] = "sudo -S apt-get install -y google-chrome-canary"
-    cmdArray[(11, 2)] =  ("UbuComplex", "InstOfInstaller", "NeedsPpa", "NeedsKey")
+    cmdArray[(0, 11)] = "apt-get-canary"
+    cmdArray[(1, 11)] = "sudo -S apt-get install -y google-chrome-canary"
+    cmdArray[(2, 11)] =  '("UbuComplex", "InstOfInstaller", "NeedsPpa", "NeedsKey")'
     # cmdArray[(11, 3)] = "sudo sh -c 'echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list'"
-    cmdArray[(11, 3)] = "sudo sh -c 'echo 'deb http://dl.google.com/linux/chrome/deb/ canary main' >> /etc/apt/sources.list.d/google.list'"
-    cmdArray[(11, 4)] = "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
+    cmdArray[(3, 11)] = "sudo sh -c 'echo 'deb http://dl.google.com/linux/chrome/deb/ canary main' >> /etc/apt/sources.list.d/google.list'"
+    cmdArray[(4, 11)] = "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
 
-    cmdArray[(12, 0)] = "apt-get-shutter"
-    cmdArray[(12, 1)] = "sudo -S apt-get install -y shutter"
-    cmdArray[(12, 2)] = "UbuSingleLineSimple"
-    cmdArray[(12, 3)] = " "
+    cmdArray[(0, 12)] = "apt-get-shutter"
+    cmdArray[(1, 12)] = "sudo -S apt-get install -y shutter"
+    cmdArray[(2, 12)] = "UbuSingleLineSimple"
+    cmdArray[(3, 12)] = " "
 
-    cmdArray[(13, 0)] = "apt-get-stellarium"
-    cmdArray[(13, 1)] = "sudo -S apt-get install -y stellarium"
-    cmdArray[(13, 2)] = "UbuSingleLineSimple"
-    cmdArray[(13, 3)] = " "
+    cmdArray[(0, 13)] = "apt-get-stellarium"
+    cmdArray[(1, 13)] = "sudo -S apt-get install -y stellarium"
+    cmdArray[(2, 13)] = "UbuSingleLineSimple"
+    cmdArray[(3, 13)] = " "
 
-    cmdArray[(14, 0)] = "apt-get-atom"
-    cmdArray[(14, 1)] = "sudo -S apt-get install -y atom"
-    cmdArray[(14, 2)] = "UbuComplex"
-    cmdArray[(14, 3)] = " "
+    cmdArray[(0, 14)] = "apt-get-atom"
+    cmdArray[(1, 14)] = "sudo -S apt-get install -y atom"
+    cmdArray[(2, 14)] = "UbuComplex"
+    cmdArray[(3, 14)] = " "
 
-    cmdArray[(15, 0)] = "apt-get-idle3"
-    cmdArray[(15, 1)] = "sudo -S apt-get install -y idle3"
-    cmdArray[(15, 2)] = "UbuSingleLineSimple"
-    cmdArray[(15, 3)] = " "
+    cmdArray[(0, 15)] = "apt-get-idle3"
+    cmdArray[(1, 15)] = "sudo -S apt-get install -y idle3"
+    cmdArray[(2, 15)] = "UbuSingleLineSimple"
+    cmdArray[(3, 15)] = " "
 
-    cmdArray[(16, 0)] = "apt-get-gcommander"
-    cmdArray[(16, 1)] = "sudo -S apt-get install -y gnome-commander"
-    cmdArray[(16, 2)] = "UbuSingleLineSimple"
-    cmdArray[(16, 3)] = " "
+    cmdArray[(0, 16)] = "apt-get-gcommander"
+    cmdArray[(1, 16)] = "sudo -S apt-get install -y gnome-commander"
+    cmdArray[(2, 16)] = "UbuSingleLineSimple"
+    cmdArray[(3, 16)] = " "
 
-    cmdArray[(17, 0)] = "apt-get-python3-urwid"
-    cmdArray[(17, 1)] = "sudo -S apt-get install -y python3-urwid"
-    cmdArray[(17, 2)] = "UbuSingleLineSimple"
-    cmdArray[(17, 3)] = " "
+    cmdArray[(0, 17)] = "apt-get-python3-urwid"
+    cmdArray[(1, 17)] = "sudo -S apt-get install -y python3-urwid"
+    cmdArray[(2, 17)] = "UbuSingleLineSimple"
+    cmdArray[(3, 17)] = " "
 
-    cmdArray[(18, 0)] = "apt-get-ncurses"
-    cmdArray[(18, 1)] = "sudo -S apt-get install -y libncurses5-dev libncursesw5-dev ncurses-doc"
-    cmdArray[(18, 2)] = "UbuSingleLineSimple"
-    cmdArray[(18, 3)] = " "
+    cmdArray[(0, 18)] = "apt-get-ncurses"
+    cmdArray[(1, 18)] = "sudo -S apt-get install -y libncurses5-dev libncursesw5-dev ncurses-doc"
+    cmdArray[(2, 18)] = "UbuSingleLineSimple"
+    cmdArray[(3, 18)] = " "
 
     cmdArray[(19, 0)] = "apt-get-telegram"
     cmdArray[(19, 1)] = "sudo -S apt-get install -y telegram"
@@ -695,7 +707,6 @@ def genCmdArraySample():
     return cmdArray
 
 # sudo apt-get install libncurses5-dev libncursesw5-dev ncurses-doc
-
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj     the end of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
