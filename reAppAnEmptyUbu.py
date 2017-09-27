@@ -14,11 +14,19 @@ import sqlite3
 import psycopg2
 import django
 
+'''
+w = 5
+h = 99
+cmdArrayWidth = w
+cmdArrayHeight = h 
+cmdArray = {( w, h): " " for w in range(cmdArrayWidth) for h in range(cmdArrayHeight)}
+'''
+
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # clean new SCREEN print of cmdArray
-def screenPrintCmdArray():
+def genCmdArray():
 
-    cmdArray = genCmdArraySample( 5, 30 )
+    cmdArray = genCmdArraySample( 5, 99 )
     ## print("Function genCmdArraySample: ", cmdArray)
 
     ### cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
@@ -39,7 +47,36 @@ def screenPrintCmdArray():
 
     #  cmdArrValDotTxt.close()
     print()
-    return
+    return cmdArray 
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+# clean new SCREEN print of cmdArray
+def screenPrintCmdArray(cmdArray):
+
+    ## cmdArray = genCmdArraySample( 5, 30 )
+    ## print("Function genCmdArraySample: ", cmdArray)
+
+    ### cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
+    print()
+    for  row in range(0, 98, 1):
+
+        for column in range(0, 4, 1):
+
+            strOut = "cmdArray[(" + str(column) + ", " + str(row) + ")] = " + '"' + cmdArray[(column, row)] + '"'
+            print( strOut )
+            
+            
+            #  cmdArrValDotTxt.write(strOut + '\n')
+
+        print()
+        #  cmdArrValDotTxt.write('\n')
+
+
+    #  cmdArrValDotTxt.close()
+    print()
+    return  ## cmdArray 
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
@@ -806,7 +843,7 @@ def repeatAptGetShellBash(userPassWd, cmdArray):
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the start of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # provides a serial line by line terminal interface
-def line_by_line_term_interface():
+def line_by_line_term_interface(cmdArray):
 
     import getpass
     import subprocess
@@ -829,29 +866,33 @@ def line_by_line_term_interface():
     if line_choice <= 1:
         cmdArray = genCmdArraySample()
         print("Function genCmdArraySample: ", cmdArray)
+        line_by_line_term_interface()
     elif line_choice <= 2:
         cmdArray = genCmdArraySample()
         print("Function genCmdArraySample: ", cmdArray)
+        line_by_line_term_interface()
     elif line_choice <= 3:
         cmdArray = genCmdArraySample()
         print("Function genCmdArraySample: ", cmdArray)
+        line_by_line_term_interface()
     elif line_choice <= 4:
         out_bytes = genaFile_cmdArrValsDotTxt()
         print( out_bytes )
-        sys.exit(main())
+        line_by_line_term_interface(cmdArray)
     elif line_choice <= 5:
         out_bytes = genaFile_cmdArrValsDotTxt()
         print( out_bytes )
-        sys.exit(main())
+        line_by_line_term_interface(cmdArray)
     elif line_choice <= 6:
         out_bytes = "User chose to return to previous menu. "
         print(); print( out_bytes )
-        sys.exit(main())
+        return cmdArray  ## menuInit(cmdArray)  ## 
     elif line_choice <= 7:
         out_bytes = "User chose to run cmdArray screen printout. "
         print(); print( out_bytes )
         # sys.exit(main())
-        out_bytes = screenPrintCmdArray()
+        out_bytes = screenPrintCmdArray(cmdArray)
+        line_by_line_term_interface(cmdArray)
 
     else:
         ### cmdArray = genCmdArraySample()
@@ -859,11 +900,7 @@ def line_by_line_term_interface():
 
         out_bytes = "Entry is out of range." # line_by_line_term_interface()
         print(); print( out_bytes )
-        sys.exit(main())
-
-
-
-
+        line_by_line_term_interface(cmdArray) ## sys.exit(main())
 
     print("")
     print("Need sudo password to install software.")
@@ -887,6 +924,60 @@ def line_by_line_term_interface():
     return out_bytes
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of menuInit   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+def menuInit(cmdArray):
+
+    print(" ")
+
+    line_choice = 3
+    print("")
+    print("1. Choose 1 for Cursed terminal interface.")
+    print("2. Choose 2 for hand built terminal interface.")
+    print("3. Choose 3 for line by line terminal interface.")
+    print("4. Choose 4 to print present cmdArray to console.")
+    print("5. Choose 5 to gen up this apps default internal Ubu app dB. ")
+    print("6. Choose 6 to EXIT program.")
+    line_choice = input("Which number do you want? ")
+    line_choice = int(line_choice)
+
+    if line_choice <= 1:
+        out_bytes = line_by_line_term_interface(cmdArray)
+        menuInit( cmdArray )
+    elif line_choice <= 2:
+        out_bytes = line_by_line_term_interface(cmdArray)
+        menuInit( cmdArray )
+    elif line_choice <= 3:
+        cmdArray = line_by_line_term_interface(cmdArray)
+        menuInit( cmdArray )
+    elif line_choice <= 4:
+        screenPrintCmdArray( cmdArray )
+        ### print( out_bytes )
+        menuInit( cmdArray )
+    elif line_choice <= 5:
+        cmdArray = genCmdArray()  # genCmdArray()
+        # print( out_bytes )
+        menuInit( cmdArray )
+    elif line_choice <= 6:
+        out_bytes = "Exit program is chosen. sys.exit() "
+        print(); print( out_bytes )
+        sys.exit()
+    else:
+        out_bytes = "Entry is out of range." # line_by_line_term_interface()
+        print(); print( out_bytes )
+        menuInit( cmdArray )
+
+    # out_bytes.wait()
+    print("# jcj-jcj-jcj- Function Main is ending with sys.exit(): ", out_bytes)
+
+    print(" ")
+    print("# jcj-jcj-jcj- END OF PROGRAM - jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj")
+    print(" ")
+    return
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of menuInit   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+    ## if __name__ == "__main__":
+    ## sys.exit(main())
+
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of main   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 def main(argv=None):
@@ -913,40 +1004,14 @@ def main(argv=None):
     '''
     Trying to install a favorite set of Ubu software.
     '''
+    
+    w = 5
+    h = 99
+    cmdArrayWidth = w
+    cmdArrayHeight = h 
+    cmdArray = {( w, h): " " for w in range(cmdArrayWidth) for h in range(cmdArrayHeight)}
 
-    line_choice = 3
-    print("")
-    print("1. Choose 1 for Cursed terminal interface.")
-    print("2. Choose 2 for hand built terminal interface.")
-    print("3. Choose 3 for line by line terminal interface.")
-    print("4. Choose 4 for outputting default cmdArray list to csv file.")
-    print("5. Choose 5 for gen a file cmdArrVals.txt.")
-    print("6. Choose 6 to EXIT program.")
-    line_choice = input("Which number do you want? ")
-    line_choice = int(line_choice)
-
-    if line_choice <= 1:
-        out_bytes = line_by_line_term_interface()
-    elif line_choice <= 2:
-        out_bytes = line_by_line_term_interface()
-    elif line_choice <= 3:
-        out_bytes = line_by_line_term_interface()
-    elif line_choice <= 4:
-        out_bytes = genaFile_cmdArrValsDotTxt()
-        print( out_bytes )
-        sys.exit(main())
-    elif line_choice <= 5:
-        out_bytes = genaFile_cmdArrValsDotTxt()
-        print( out_bytes )
-        sys.exit(main())
-    elif line_choice <= 6:
-        out_bytes = "Exit program is chosen. sys.exit() "
-        print(); print( out_bytes )
-        sys.exit()
-    else:
-        out_bytes = "Entry is out of range." # line_by_line_term_interface()
-        print(); print( out_bytes )
-        sys.exit(main())
+    menuInit( cmdArray )
 
     # out_bytes.wait()
     print("# jcj-jcj-jcj- Function Main is ending with sys.exit(): ", out_bytes)
