@@ -19,11 +19,11 @@ import django
 def screenPrintCmdArray():
 
     cmdArray = genCmdArraySample()
-    print("Function genCmdArraySample: ", cmdArray)
+    ###  print("Function genCmdArraySample: ", cmdArray)
 
     ### cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
     print()
-    for  row in range(0, 55, 1):
+    for  row in range(0, 98, 1):
 
         for column in range(0, 4, 1):
 
@@ -48,7 +48,7 @@ def screenPrintCmdArray():
 def genaFile_cmdArrValsDotCsv():
 
     cmdArray = genCmdArraySample()
-    print("Function genCmdArraySample: ", cmdArray)
+    ## print("Function genCmdArraySample: ", cmdArray)
 
     cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
     print()
@@ -76,7 +76,7 @@ def genaFile_cmdArrValsDotCsv():
 def genaFile_cmdArrHeadersAndValsIntoListOfDicts():
 
     cmdArray = genCmdArraySample()
-    print("Function genCmdArraySample: ", cmdArray)
+    ## print("Function genCmdArraySample: ", cmdArray)
 
     cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
     print()
@@ -104,7 +104,7 @@ def genaFile_cmdArrHeadersAndValsIntoListOfDicts():
 def genaFile_cmdArrValsDotTxt():  # Gens txt file with some reversals
 
     cmdArray = genCmdArraySample()
-    print("Function genCmdArraySample: ", cmdArray)
+    ## print("Function genCmdArraySample: ", cmdArray)
 
     cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
     print()
@@ -130,7 +130,7 @@ def genaFile_cmdArrValsDotTxt():  # Gens txt file with some reversals
 # Generates as a dev default an array of apt-get command lines
 def genCmdArraySample():
     w = 5
-    h = 60
+    h = 99
     width = w
     height = h
     cmdArray = {(w, h): " " for w in range(width) for h in range(height)}
@@ -245,334 +245,354 @@ def genCmdArraySample():
     cmdArray[(2, 18)] = "UbuSingleLineSimple"
     cmdArray[(3, 18)] = " "
 
-    cmdArray[(19, 0)] = "apt-get-telegram"
-    cmdArray[(19, 1)] = "sudo -S apt-get install -y telegram"
-    cmdArray[(19, 2)] = "UbuComplex"
-    cmdArray[(19, 3)] = " "
+    cmdArray[(0, 19)] = "apt-get-telegram"
+    cmdArray[(1, 19)] = "sudo -S apt-get install -y telegram"
+    cmdArray[(2, 19)] = "UbuComplex"
+    cmdArray[(3, 19)] = " "
 
-    cmdArray[(20, 0)] = "apt-get-bpython3"
-    cmdArray[(20, 1)] = "sudo -S apt-get install -y bpython3"
-    cmdArray[(20, 2)] = "UbuSingleLineSimple"
-    cmdArray[(20, 3)] = " "
+    cmdArray[(0, 20)] = "apt-get-bpython3"
+    cmdArray[(1, 20)] = "sudo -S apt-get install -y bpython3"
+    cmdArray[(2, 20)] = "UbuSingleLineSimple"
+    cmdArray[(3, 20)] = " "
 
-    cmdArray[(21, 0)] = "apt-get-ipython3"
-    cmdArray[(21, 1)] = "sudo -S apt-get install -y ipython3"
-    cmdArray[(21, 2)] = "UbuSingleLineSimple"
-    cmdArray[(21, 3)] = " "
+    cmdArray[(0, 21)] = "apt-get-ipython3"
+    cmdArray[(1, 21)] = "sudo -S apt-get install -y ipython3"
+    cmdArray[(2, 21)] = "UbuSingleLineSimple"
+    cmdArray[(3, 21)] = " "
 
-    cmdArray[(22, 0)] = "apt-get-gimp"
-    cmdArray[(22, 1)] = "sudo -S apt-get install -y gimp"
-    cmdArray[(22, 2)] = "UbuSingleLineSimple"
-    cmdArray[(22, 3)] = " "
+    cmdArray[(0, 22)] = "apt-get-gimp"
+    cmdArray[(1, 22)] = "sudo -S apt-get install -y gimp"
+    cmdArray[(2, 22)] = "UbuSingleLineSimple"
+    cmdArray[(3, 22)] = " "
 
-    cmdArray[(23, 0)] = "apt-get-qrq"
-    cmdArray[(23, 1)] = "sudo -S apt-get install -y qrq"
-    cmdArray[(23, 2)] = "UbuSingleLineSimple"
-    cmdArray[(23, 3)] = " "
+    cmdArray[(0, 23)] = "apt-get-qrq"
+    cmdArray[(1, 23)] = "sudo -S apt-get install -y qrq"
+    cmdArray[(2, 23)] = "UbuSingleLineSimple"
+    cmdArray[(3, 23)] = " "
 
-    cmdArray[(24, 0)] = "apt-get-spyder3"
-    cmdArray[(24, 1)] = "sudo -S apt-get install -y spyder3"
-    cmdArray[(24, 2)] = "UbuSingleLineSimple"
-    cmdArray[(24, 3)] = " "
+    cmdArray[(0, 24)] = "apt-get-spyder3"
+    cmdArray[(1, 24)] = "sudo -S apt-get install -y spyder3"
+    cmdArray[(2, 24)] = "UbuSingleLineSimple"
+    cmdArray[(3, 24)] = " "
 
-    cmdArray[(25, 0)] = "apt-get-gperiodic"
-    cmdArray[(25, 1)] = "sudo -S apt-get install -y gperiodic"
-    cmdArray[(25, 2)] = "UbuSingleLineSimple"
-    cmdArray[(25, 3)] = " "
+    cmdArray[(0, 25)] = "apt-get-gperiodic"
+    cmdArray[(1, 25)] = "sudo -S apt-get install -y gperiodic"
+    cmdArray[(2, 25)] = "UbuSingleLineSimple"
+    cmdArray[(3, 25)] = " "
 
-    cmdArray[(26, 0)] = "apt-get-inkscape"
-    cmdArray[(26, 1)] = "sudo -S apt-get install -y inkscape"
-    cmdArray[(26, 2)] = "UbuSingleLineSimple"
-    cmdArray[(26, 3)] = " "
+    cmdArray[(0, 26)] = "apt-get-inkscape"
+    cmdArray[(1, 26)] = "sudo -S apt-get install -y inkscape"
+    cmdArray[(2, 26)] = "UbuSingleLineSimple"
+    cmdArray[(3, 26)] = " "
 
-    cmdArray[(27, 0)] = "apt-get-blender"
-    cmdArray[(27, 1)] = "sudo -S apt-get install -y blender"
-    cmdArray[(27, 2)] = "UbuSingleLineSimple"
-    cmdArray[(27, 3)] = " "
+    cmdArray[(0, 27)] = "apt-get-blender"
+    cmdArray[(1, 27)] = "sudo -S apt-get install -y blender"
+    cmdArray[(2, 27)] = "UbuSingleLineSimple"
+    cmdArray[(3, 27)] = " "
 
-    cmdArray[(28, 0)] = " "
-    cmdArray[(28, 1)] = " "
-    cmdArray[(28, 2)] = "UbuSingleLineSimple"
-    cmdArray[(28, 3)] = " "
+    cmdArray[(0, 28)] = " "
+    cmdArray[(1, 28)] = " "
+    cmdArray[(2, 28)] = "UbuSingleLineSimple"
+    cmdArray[(3, 28)] = " "
 
-    cmdArray[(29, 0)] = "apt-get-slack"
-    cmdArray[(29, 1)] = "sudo -S apt-get install -y slack"
-    cmdArray[(29, 2)] = "UbuComplex"
-    cmdArray[(29, 3)] = " "
+    cmdArray[(0, 29)] = "apt-get-slack"
+    cmdArray[(1, 29)] = "sudo -S apt-get install -y slack"
+    cmdArray[(2, 29)] = "UbuComplex"
+    cmdArray[(3, 29)] = " "
 
-    cmdArray[(30, 0)] = "apt-get-esl-erlang"
-    cmdArray[(30, 1)] = "sudo -S apt-get install -y esl-erlang"
-    cmdArray[(30, 2)] = ("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")
-    cmdArray[(30, 3)] = "wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb"
+    cmdArray[(0, 30)] = "apt-get-esl-erlang"
+    cmdArray[(1, 30)] = "sudo -S apt-get install -y esl-erlang"
+    cmdArray[(2, 30)] = '("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")'
+    cmdArray[(3, 30)] = "wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb"
 
-    cmdArray[(31, 0)] = "apt-get-elixir"
-    cmdArray[(31, 1)] = "sudo -S apt-get install -y elixir"
-    cmdArray[(31, 2)] = ("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")
-    cmdArray[(31, 3)] = "wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb"
+    cmdArray[(0, 31)] = "apt-get-elixir"
+    cmdArray[(1, 31)] = "sudo -S apt-get install -y elixir"
+    cmdArray[(2, 31)] = '("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")'
+    cmdArray[(3, 31)] = "wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb"
 
-    cmdArray[(32, 0)] = "apt-get-gparted"
-    cmdArray[(32, 1)] = "sudo -S apt-get install -y gparted"
-    cmdArray[(32, 2)] = "UbuSingleLineSimple"
-    cmdArray[(32, 3)] = " "
+    cmdArray[(0, 32)] = "apt-get-gparted"
+    cmdArray[(1, 32)] = "sudo -S apt-get install -y gparted"
+    cmdArray[(2, 32)] = "UbuSingleLineSimple"
+    cmdArray[(3, 32)] = " "
 
-    cmdArray[(33, 0)] = "apt-get-zim"
-    cmdArray[(33, 1)] = "sudo -S apt-get install -y zim"
-    cmdArray[(33, 2)] = "UbuSingleLineSimple"
-    cmdArray[(33, 3)] = " "
+    cmdArray[(0, 33)] = "apt-get-zim"
+    cmdArray[(1, 33)] = "sudo -S apt-get install -y zim"
+    cmdArray[(2, 33)] = "UbuSingleLineSimple"
+    cmdArray[(3, 33)] = " "
 
-    cmdArray[(34, 0)] = "apt-get-gfortran"
-    cmdArray[(34, 1)] = "sudo -S apt-get install -y gfortran"
-    cmdArray[(34, 2)] = "UbuSingleLineSimple"
-    cmdArray[(34, 3)] = " "
+    cmdArray[(0, 34)] = "apt-get-gfortran"
+    cmdArray[(1, 34)] = "sudo -S apt-get install -y gfortran"
+    cmdArray[(2, 34)] = "UbuSingleLineSimple"
+    cmdArray[(3, 34)] = " "
 
-    cmdArray[(35, 0)] = "apt-get-gfortran-5"
-    cmdArray[(35, 1)] = "sudo -S apt-get install -y gfortran-5"
-    cmdArray[(35, 2)] = "UbuSingleLineSimple"
-    cmdArray[(35, 3)] = "sudo apt-add-repository ppa:ubuntu-toolchain-r/test"
+    cmdArray[(0, 35)] = "apt-get-gfortran-5"
+    cmdArray[(1, 35)] = "sudo -S apt-get install -y gfortran-5"
+    cmdArray[(2, 35)] = "UbuSingleLineSimple"
+    cmdArray[(3, 35)] = "sudo apt-add-repository ppa:ubuntu-toolchain-r/test"
 
-    cmdArray[(36, 0)] = "apt-get-gfortran-6"
-    cmdArray[(36, 1)] = "sudo -S apt-get install -y gfortran-6"
-    cmdArray[(36, 2)] = "UbuSingleLineSimple"
-    cmdArray[(36, 3)] = "sudo apt-add-repository ppa:ubuntu-toolchain-r/test"
+    cmdArray[(0, 36)] = "apt-get-gfortran-6"
+    cmdArray[(1, 36)] = "sudo -S apt-get install -y gfortran-6"
+    cmdArray[(2, 36)] = "UbuSingleLineSimple"
+    cmdArray[(3, 36)] = "sudo apt-add-repository ppa:ubuntu-toolchain-r/test"
 
-    cmdArray[(37, 0)] = "apt-get-postgresqlStuff"
-    cmdArray[(37, 1)] = "sudo -S apt-get install -y postgresql libpq-dev postgresql-client postgresql-client-common"
-    cmdArray[(37, 2)] = "UbuSingleLineSimple"
-    cmdArray[(37, 3)] = " "
+    cmdArray[(0, 37)] = "apt-get-postgresqlStuff"
+    cmdArray[(1, 37)] = "sudo -S apt-get install -y postgresql libpq-dev postgresql-client postgresql-client-common"
+    cmdArray[(2, 37)] = "UbuSingleLineSimple"
+    cmdArray[(3, 37)] = " "
 
-    cmdArray[(38, 0)] = "apt-get-pythonStuff"
-    cmdArray[(38, 1)] = "sudo -S apt-get install -y virtualenv python-pip python3-dev"
-    cmdArray[(38, 2)] = "UbuSingleLineSimple"
-    cmdArray[(38, 3)] = " "
+    cmdArray[(0, 38)] = "apt-get-pythonStuff"
+    cmdArray[(1, 38)] = "sudo -S apt-get install -y virtualenv python-pip python3-dev"
+    cmdArray[(2, 38)] = "UbuSingleLineSimple"
+    cmdArray[(3, 38)] = " "
 
-    cmdArray[(39, 0)] = "apt-get-natron"
-    cmdArray[(39, 1)] = "sudo -S apt-get install -y virtualenv python-pip natron"
-    cmdArray[(39, 2)] = ("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")
-    cmdArray[(39, 3)] = " "
+    cmdArray[(0, 39)] = "apt-get-natron"
+    cmdArray[(1, 39)] = "sudo -S apt-get install -y virtualenv python-pip natron"
+    cmdArray[(2, 39)] = '("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")'
+    cmdArray[(3, 39)] = " "
 
-    cmdArray[(40, 0)] = "apt-get-lightworks"
-    cmdArray[(40, 1)] = "sudo -S apt-get install -y virtualenv python-pip lightworks"
-    cmdArray[(40, 2)] = ("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")
-    cmdArray[(40, 3)] = " "
+    cmdArray[(0, 40)] = "apt-get-lightworks"
+    cmdArray[(1, 40)] = "sudo -S apt-get install -y virtualenv python-pip lightworks"
+    cmdArray[(2, 40)] = '("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")'
+    cmdArray[(3, 40)] = " "
 
-    cmdArray[(41, 0)] = "apt-get-xbase"
-    cmdArray[(41, 1)] = "sudo -S apt-get install -y virtualenv python-pip xbase"
-    cmdArray[(41, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(41, 3)] = " "
+    cmdArray[(0, 41)] = "apt-get-xbase"
+    cmdArray[(1, 41)] = "sudo -S apt-get install -y virtualenv python-pip xbase"
+    cmdArray[(2, 41)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 41)] = " "
 
-    cmdArray[(42, 0)] = "apt-get-clementine"
-    cmdArray[(42, 1)] = "sudo -S apt-get install -y virtualenv python-pip clementine"
-    cmdArray[(42, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(42, 3)] = " "
+    cmdArray[(0, 42)] = "apt-get-clementine"
+    cmdArray[(1, 42)] = "sudo -S apt-get install -y virtualenv python-pip clementine"
+    cmdArray[(2, 42)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 42)] = " "
 
-    cmdArray[(43, 0)] = "apt-get-rawtherapee"
-    cmdArray[(43, 1)] = "sudo -S apt-get install -y virtualenv python-pip rawtherapee"
-    cmdArray[(43, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(43, 3)] = " "
+    cmdArray[(0, 43)] = "apt-get-rawtherapee"
+    cmdArray[(1, 43)] = "sudo -S apt-get install -y virtualenv python-pip rawtherapee"
+    cmdArray[(2, 43)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 43)] = " "
 
-    cmdArray[(44, 0)] = "apt-get-bluefish"
-    cmdArray[(44, 1)] = "sudo -S apt-get install -y virtualenv python-pip bluefish"
-    cmdArray[(44, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(44, 3)] = " "
+    cmdArray[(0, 44)] = "apt-get-bluefish"
+    cmdArray[(1, 44)] = "sudo -S apt-get install -y virtualenv python-pip bluefish"
+    cmdArray[(2, 44)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 44)] = " "
 
-    cmdArray[(45, 0)] = "apt-get-openscad"
-    cmdArray[(45, 1)] = "sudo -S apt-get install -y virtualenv python-pip openscad"
-    cmdArray[(45, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(45, 3)] = " "
+    cmdArray[(0, 45)] = "apt-get-openscad"
+    cmdArray[(1, 45)] = "sudo -S apt-get install -y virtualenv python-pip openscad"
+    cmdArray[(2, 45)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 45)] = " "
 
-    cmdArray[(46, 0)] = "apt-get-openshot"
-    cmdArray[(46, 1)] = "sudo -S apt-get install -y virtualenv python-pip openshot"
-    cmdArray[(46, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(46, 3)] = " "
+    cmdArray[(0, 46)] = "apt-get-openshot"
+    cmdArray[(1, 46)] = "sudo -S apt-get install -y virtualenv python-pip openshot"
+    cmdArray[(2, 46)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 46)] = " "
 
-    cmdArray[(47, 0)] = "apt-get-openshot"
-    cmdArray[(47, 1)] = "sudo -S apt-get install -y virtualenv python-pip josm"
-    cmdArray[(47, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(47, 3)] = " "
+    cmdArray[(0, 47)] = "apt-get-openshot"
+    cmdArray[(1, 47)] = "sudo -S apt-get install -y virtualenv python-pip josm"
+    cmdArray[(2, 47)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 47)] = " "
 
-    cmdArray[(48, 0)] = "apt-get-logism"
-    cmdArray[(48, 1)] = "sudo -S apt-get install -y logism"
-    cmdArray[(48, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(48, 3)] = " "
+    cmdArray[(0, 48)] = "apt-get-logism"
+    cmdArray[(1, 48)] = "sudo -S apt-get install -y logism"
+    cmdArray[(2, 48)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 48)] = " "
 
-    cmdArray[(49, 0)] = "apt-get-spyder3"
-    cmdArray[(49, 1)] = "sudo -S apt-get install -y spyder3"
-    cmdArray[(49, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(49, 3)] = " "
+    cmdArray[(0, 49)] = "apt-get-spyder3"
+    cmdArray[(1, 49)] = "sudo -S apt-get install -y spyder3"
+    cmdArray[(2, 49)] = '("UbuSingleLineSimple",)'
+    cmdArray[(3, 49)] = " "
 
 #########################################################################
 
-    cmdArray[(50, 0)] = "apt-get-dosbox"
-    cmdArray[(50, 1)] = ""   # "dosbox"
-    cmdArray[(50, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(50, 3)] = " "
+    cmdArrLineNum = 50 ## cmdArrLineNum + 1  ## 50
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-dosbox"
+    cmdArray[( 1, cmdArrLineNum )] = ""   # "dosbox"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(51, 0)] = "apt-get-virtualbox"
-    cmdArray[(51, 1)] = ""   # "virtualbox"
-    cmdArray[(51, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(51, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 51
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-virtualbox"
+    cmdArray[( 1, cmdArrLineNum )] = ""   # "virtualbox"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(52, 0)] = "apt-get-maxima"
-    cmdArray[(52, 1)] = ""   # "maxima"
-    cmdArray[(52, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(52, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 52
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-maxima"
+    cmdArray[( 1, cmdArrLineNum )] = ""   # "maxima"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(53, 0)] = "apt-get-pymapper"
-    cmdArray[(53, 1)] = ""   # "pymapper"
-    cmdArray[(53, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(53, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 53
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-pymapper"
+    cmdArray[( 1, cmdArrLineNum )] = ""   # "pymapper"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(54, 0)] = "apt-get-winetricks"
-    cmdArray[(54, 1)] = ""   # "winetricks"
-    cmdArray[(54, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(54, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 54
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-winetricks"
+    cmdArray[( 1, cmdArrLineNum )] = ""   # "winetricks"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(55, 0)] = "apt-get-herculesstudio"
-    cmdArray[(55, 1)] = ""   # "herculesstudio"
-    cmdArray[(55, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(55, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 55
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-herculesstudio"
+    cmdArray[( 1, cmdArrLineNum )] = ""   # "herculesstudio"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(56, 0)] = "apt-get-veracrypt"
-    cmdArray[(56, 1)] = " " 
-    cmdArray[(56, 2)] = " "
-    cmdArray[(56, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 56
+    cmdArray[ 0, cmdArrLineNum ] = "apt-get-veracrypt"
+    cmdArray[ 1, cmdArrLineNum ] = " " 
+    cmdArray[ 2, cmdArrLineNum ] = " "
+    cmdArray[ 3, cmdArrLineNum ] = " "
 
-    cmdArray[(57, 0)] = "apt-get-emacs25"
-    cmdArray[(57, 1)] = "sudo apt-get install emacs25"
-    cmdArray[(57, 2)] = ("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")
-    cmdArray[(57, 3)] = "sudo apt-add-repository -y ppa:adrozdoff/emacs"
+    cmdArrLineNum = cmdArrLineNum + 1  ## 57
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-emacs25"
+    cmdArray[( 1, cmdArrLineNum )] = "sudo apt-get install emacs25"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")'
+    cmdArray[( 3, cmdArrLineNum )] = "sudo apt-add-repository -y ppa:adrozdoff/emacs"
 
-    cmdArray[(58, 0)] = "apt-get-zimdesktop"
-    cmdArray[(58, 1)] = " "
-    cmdArray[(58, 2)] = " "
-    cmdArray[(58, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 58
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-zimdesktop"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(59, 0)] = " "
-    cmdArray[(59, 1)] = ""   # "lightworks"
-    cmdArray[(59, 2)] = " "
-    cmdArray[(59, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 59
+    cmdArray[( 0, cmdArrLineNum )] = " "
+    cmdArray[( 1, cmdArrLineNum )] = ""   # "lightworks"
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(60, 0)] = " "
-    cmdArray[(60, 1)] = ""   # "natron"
-    cmdArray[(60, 2)] = " "
-    cmdArray[(60, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 60
+    cmdArray[( 0, cmdArrLineNum )] = " "
+    cmdArray[( 1, cmdArrLineNum )] = ""   # "natron"
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(61, 0)] = " "
-    cmdArray[(61, 1)] = ""   # "rcmdr r rstudio"
-    cmdArray[(61, 2)] = " "
-    cmdArray[(61, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 61
+    cmdArray[( 0, cmdArrLineNum )] = " "
+    cmdArray[( 1, cmdArrLineNum )] = ""   # "rcmdr r rstudio"
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(62, 0)] = " "
-    cmdArray[(62, 1)] = " "
-    cmdArray[(62, 2)] = " "
-    cmdArray[(62, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 62
+    cmdArray[( 0, cmdArrLineNum )] = " "
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(63, 0)] = "apt-get-android-studio"
-    cmdArray[(63, 1)] = " "
-    cmdArray[(63, 2)] = " "
-    cmdArray[(63, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 63
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-android-studio"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(64, 0)] = "apt-get-gnome-commander"
-    cmdArray[(64, 1)] = " "
-    cmdArray[(64, 2)] = " "
-    cmdArray[(64, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 64
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-gnome-commander"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(65, 0)] = "apt-get-putty-ssh-client"
-    cmdArray[(65, 1)] = " "
-    cmdArray[(65, 2)] = " "
-    cmdArray[(65, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 65
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-putty-ssh-client"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(66, 0)] = "apt-get-telegram"
-    cmdArray[(66, 1)] = " "
-    cmdArray[(66, 2)] = " "
-    cmdArray[(66, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 66
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-telegram"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(67, 0)] = "apt-get-slack"
-    cmdArray[(67, 1)] = " "
-    cmdArray[(67, 2)] = " "
-    cmdArray[(67, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 67
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-slack"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(68, 0)] = "apt-get-atom"
-    cmdArray[(68, 1)] = " "
-    cmdArray[(68, 2)] = " "
-    cmdArray[(68, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 68
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-atom"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArray[(69, 0)] = "apt-get-oracle-virtualbox"
-    cmdArray[(69, 1)] = " "
-    cmdArray[(69, 2)] = " "
-    cmdArray[(69, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1  ## 69
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-oracle-virtualbox"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
-    cmdArrLineNum = 70   ##  70
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-clementine"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArrLineNum = cmdArrLineNum + 1   ##  70
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-clementine"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ## 71
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-JOSM"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-JOSM"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  72
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-gnucash"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-gnucash"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  73
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-scribus"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-scribus"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  74
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-zoom"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-zoom"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  75
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-xbase"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-xbase"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  76
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-rawtherapee"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-rawtherapee"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  77
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-openscad"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-openscad"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  78
-    cmdArray[(cmdArrLineNum, 0)] = "app-get-postgresforms"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "app-get-postgresforms"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  79
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-undetbootin"
-    cmdArray[(cmdArrLineNum, 1)] = " "
-    cmdArray[(cmdArrLineNum, 2)] = " "
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-undetbootin"
+    cmdArray[( 1, cmdArrLineNum )] = " "
+    cmdArray[( 2, cmdArrLineNum )] = " "
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  80
-    cmdArray[(cmdArrLineNum, 0)] = "apt-get-umake"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install -y ubuntu-make && sudo apt-get update && sudo apt-get dist-upgrade -y"
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")
-    cmdArray[(cmdArrLineNum, 3)] = "sudo add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make"
+    cmdArray[( 0, cmdArrLineNum )] = "apt-get-umake"
+    cmdArray[( 1, cmdArrLineNum )] = "sudo apt-get install -y ubuntu-make && sudo apt-get update && sudo apt-get dist-upgrade -y"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuComplex", "NotAnInstaller", "NeedsPpa", "NoKey")'
+    cmdArray[( 3, cmdArrLineNum )] = "sudo add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make"
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  81
-    cmdArray[(cmdArrLineNum, 0)] = "umake-ide-idea"
-    cmdArray[(cmdArrLineNum, 1)] = "umake ide idea"   #
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "umake-ide-idea"
+    cmdArray[( 1, cmdArrLineNum )] = "umake ide idea"   #
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
 
 
@@ -580,34 +600,34 @@ def genCmdArraySample():
     # beginning of R install mess
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  82
-    cmdArray[(cmdArrLineNum, 0)] = "R-repo-add"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' | sudo tee -a /etc/apt/sources.list"   #
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "R-repo-add"
+    cmdArray[( 1, cmdArrLineNum )] = "sudo echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' | sudo tee -a /etc/apt/sources.list"   #
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  83
-    cmdArray[(cmdArrLineNum, 0)] = "R-keyring-add-pt1"
-    cmdArray[(cmdArrLineNum, 1)] = "gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9"   #
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "R-keyring-add-pt1"
+    cmdArray[( 1, cmdArrLineNum )] = "gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9"   #
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  84
-    cmdArray[(cmdArrLineNum, 0)] = "R-keyring-add-pt2"
-    cmdArray[(cmdArrLineNum, 1)] = "gpg -a --export E084DAB9 | sudo apt-key add -"   #
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "R-keyring-add-pt2"
+    cmdArray[( 1, cmdArrLineNum )] = "gpg -a --export E084DAB9 | sudo apt-key add -"   #
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  85
-    cmdArray[(cmdArrLineNum, 0)] = "R-apt-get-rbase"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install r-base r-base-dev"
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuComplex", "NeedsPpa", "NoKey")
-    cmdArray[(cmdArrLineNum, 3)] = "sudo apt-get update"
+    cmdArray[( 0, cmdArrLineNum )] = "R-apt-get-rbase"
+    cmdArray[( 1, cmdArrLineNum )] = "sudo apt-get install r-base r-base-dev"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuComplex", "NeedsPpa", "NoKey")'
+    cmdArray[( 3, cmdArrLineNum )] = "sudo apt-get update"
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  86
-    cmdArray[(cmdArrLineNum, 0)] = "R-apt-get-rstudio"
-    cmdArray[(cmdArrLineNum, 1)] = ""
-    cmdArray[(cmdArrLineNum, 2)] = ("Hand download and Ubu install")
-    cmdArray[(cmdArrLineNum, 3)] = ""
+    cmdArray[( 0, cmdArrLineNum )] = "R-apt-get-rstudio"
+    cmdArray[( 1, cmdArrLineNum )] = ""
+    cmdArray[( 2, cmdArrLineNum )] = '("Hand download and Ubu install")'
+    cmdArray[( 3, cmdArrLineNum )] = ""
 
     # end of R install mess
     ##########################################################
@@ -617,34 +637,34 @@ def genCmdArraySample():
     # beginning of Docker install mess
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  87
-    cmdArray[(cmdArrLineNum, 0)] = "Docker-add-utils-for-apt-over-https"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install apt-transport-https ca-certificates curl software-properties-common"   #
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "Docker-add-utils-for-apt-over-https"
+    cmdArray[( 1, cmdArrLineNum )] = "sudo apt-get install apt-transport-https ca-certificates curl software-properties-common"   #
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  88
-    cmdArray[(cmdArrLineNum, 0)] = "Docker-add-gpg-key"
-    cmdArray[(cmdArrLineNum, 1)] = "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"   #
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "Docker-add-gpg-key"
+    cmdArray[( 1, cmdArrLineNum )] = "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"   #
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  89
-    cmdArray[(cmdArrLineNum, 0)] = "Docker-choose-stable-repo"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable' "   #
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "Docker-choose-stable-repo"
+    cmdArray[( 1, cmdArrLineNum )] = "sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable' "   #
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  90
-    cmdArray[(cmdArrLineNum, 0)] = "Docker-apt-get-install"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install docker-ce"
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuComplex", "NeedsPpa", "NoKey")
-    cmdArray[(cmdArrLineNum, 3)] = "sudo apt-get update"
+    cmdArray[( 0, cmdArrLineNum )] = "Docker-apt-get-install"
+    cmdArray[( 1, cmdArrLineNum )] = "sudo apt-get install docker-ce"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuComplex", "NeedsPpa", "NoKey")'
+    cmdArray[( 3, cmdArrLineNum )] = "sudo apt-get update"
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  91
-    cmdArray[(cmdArrLineNum, 0)] = "Docker-test-start"
-    cmdArray[(cmdArrLineNum, 1)] = "docker run -it ubuntu bash"
-    cmdArray[(cmdArrLineNum, 2)] = ("")
-    cmdArray[(cmdArrLineNum, 3)] = "sudo docker run hello-world"
+    cmdArray[( 0, cmdArrLineNum )] = "Docker-test-start"
+    cmdArray[( 1, cmdArrLineNum )] = "docker run -it ubuntu bash"
+    cmdArray[( 2, cmdArrLineNum )] = '("")'
+    cmdArray[( 3, cmdArrLineNum )] = "sudo docker run hello-world"
 
     # end of Docker install mess
     ##########################################################
@@ -654,23 +674,23 @@ def genCmdArraySample():
     # beginning of Filezilla install mess
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  92
-    cmdArray[(cmdArrLineNum, 0)] = "Filezilla-choose-stable-repo"
+    cmdArray[( 0, cmdArrLineNum )] = "Filezilla-choose-stable-repo"
     # cmdArray[(cmdArrLineNum, 1)] = 'sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'"   
-    cmdArray[(cmdArrLineNum, 1)] =   'sudo sh -c ' + 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'   
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 1, cmdArrLineNum )] =   'sudo sh -c ' + 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'   
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  93
-    cmdArray[(cmdArrLineNum, 0)] = "Filezilla-add-gpg-key"
-    cmdArray[(cmdArrLineNum, 1)] = "wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -"   #
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 0, cmdArrLineNum )] = "Filezilla-add-gpg-key"
+    cmdArray[( 1, cmdArrLineNum )] = "wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -"   #
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  94
-    cmdArray[(cmdArrLineNum, 0)] = "Filezilla-apt-get-install"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install filezilla"
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuComplex", "NeedsPpa", "NoKey")
-    cmdArray[(cmdArrLineNum, 3)] = "sudo apt-get update"
+    cmdArray[( 0, cmdArrLineNum )] = "Filezilla-apt-get-install"
+    cmdArray[( 1, cmdArrLineNum )] = "sudo apt-get install filezilla"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuComplex", "NeedsPpa", "NoKey")'
+    cmdArray[( 3, cmdArrLineNum )] = "sudo apt-get update"
 
     # end of Filezilla install mess
     ##########################################################
@@ -680,25 +700,25 @@ def genCmdArraySample():
     # beginning of sublimetext install mess
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  95
-    cmdArray[(cmdArrLineNum, 0)] = "sublimetext-choose-stable-repo"
+    cmdArray[( 0, cmdArrLineNum )] = "sublimetext-choose-stable-repo"
     # cmdArray[(cmdArrLineNum, 1)] = "sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list'" 
                                    # echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-    cmdArray[(cmdArrLineNum, 1)] = 'sudo sh -c ' + 'echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list' 
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 1, cmdArrLineNum )] = 'sudo sh -c ' + 'echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list' 
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  96
-    cmdArray[(cmdArrLineNum, 0)] = "sublimetext-add-gpg-key"
-    cmdArray[(cmdArrLineNum, 1)] = "wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -"   
+    cmdArray[( 0, cmdArrLineNum )] = "sublimetext-add-gpg-key"
+    cmdArray[( 1, cmdArrLineNum )] = "wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -"   
                               #     wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuSingleLineSimple",)
-    cmdArray[(cmdArrLineNum, 3)] = " "
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
+    cmdArray[( 3, cmdArrLineNum )] = " "
 
     cmdArrLineNum = cmdArrLineNum + 1  ##  97
-    cmdArray[(cmdArrLineNum, 0)] = "sublimetext-apt-get-install"
-    cmdArray[(cmdArrLineNum, 1)] = "sudo apt-get install sublime-text"
-    cmdArray[(cmdArrLineNum, 2)] = ("UbuComplex", "NeedsPpa", "NoKey")
-    cmdArray[(cmdArrLineNum, 3)] = "sudo apt-get update"
+    cmdArray[( 0, cmdArrLineNum )] = "sublimetext-apt-get-install"
+    cmdArray[( 1, cmdArrLineNum )] = "sudo apt-get install sublime-text"
+    cmdArray[( 2, cmdArrLineNum )] = '("UbuComplex", "NeedsPpa", "NoKey")'
+    cmdArray[( 3, cmdArrLineNum )] = "sudo apt-get update"
 
     # end of sublimetext install mess
     ##########################################################
