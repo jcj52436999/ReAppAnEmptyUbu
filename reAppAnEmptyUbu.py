@@ -18,8 +18,8 @@ import django
 # clean new SCREEN print of cmdArray
 def screenPrintCmdArray():
 
-    cmdArray = genCmdArraySample()
-    ###  print("Function genCmdArraySample: ", cmdArray)
+    cmdArray = genCmdArraySample( 5, 30 )
+    ## print("Function genCmdArraySample: ", cmdArray)
 
     ### cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
     print()
@@ -128,13 +128,28 @@ def genaFile_cmdArrValsDotTxt():  # Gens txt file with some reversals
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the start of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # Generates as a dev default an array of apt-get command lines
-def genCmdArraySample():
+def genCmdArraySample( cmdArrayWidth, cmdArrayHeight ):
+    if (cmdArrayWidth < 1):
+      w = 5; cmdArrayWidth = w;
+
+    if (cmdArrayHeight < 1):
+      h = 99; cmdArrayHeight = h;
+    '''  
     w = 5
     h = 99
+    cmdArrayWidth = w
+    cmdArrayHeight = h 
+    '''
+    cmdArray = {( w, h): " " for w in range(cmdArrayWidth) for h in range(cmdArrayHeight)}
+    cmdArrLineNum = 0
+
+    '''
+    w = 5
+    h = 60
     width = w
     height = h
     cmdArray = {(w, h): " " for w in range(width) for h in range(height)}
-    cmdArrLineNum = 0
+    '''
 
     # y is record number
     # x is item in record
@@ -839,8 +854,15 @@ def line_by_line_term_interface():
         out_bytes = screenPrintCmdArray()
 
     else:
-        cmdArray = genCmdArraySample()
-        print("Function genCmdArraySample: ", cmdArray)
+        ### cmdArray = genCmdArraySample()
+        ### print("Function genCmdArraySample: ", cmdArray)
+
+        out_bytes = "Entry is out of range." # line_by_line_term_interface()
+        print(); print( out_bytes )
+        sys.exit(main())
+
+
+
 
 
     print("")
