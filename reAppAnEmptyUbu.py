@@ -928,34 +928,66 @@ def line_by_line_term_interface(cmdArray):
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of menuInit   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 def menuInit(cmdArray):
 
+    ## usernames = {'Sammy': 'sammy-shark', 'Jamie': 'mantisshrimp54'}
+    menuLineItems = { 
+      '0': ["0. Choose 0 to return to previous menu. "," "],
+      '1': ["1. Choose 1 for Cursed terminal interface.","line_by_line_term_interface"],
+      '2': ["2. Choose 2 for hand built terminal interface.","line_by_line_term_interface"],
+      '3': ["3. Choose 3 for line by line terminal interface.","line_by_line_term_interface"],
+      '4': ["4. Choose 4 to print present cmdArray to console.","screenPrintCmdArray"],
+      '5': ["5. Choose 5 to gen up this apps default internal Ubu app dB. ","genCmdArray"],
+      '6': ["6. Choose 6 to EXIT program."," "]
+      } 
+      
+    menuLineReactions = { 
+      'genCmdArray': genCmdArray,
+      'line_by_line_term_interface': line_by_line_term_interface,
+      'menuInit': menuInit,
+      'screenPrintCmdArray': screenPrintCmdArray
+      } 
+      
     print(" ")
-
     line_choice = 3
     print("")
-    print("1. Choose 1 for Cursed terminal interface.")
-    print("2. Choose 2 for hand built terminal interface.")
-    print("3. Choose 3 for line by line terminal interface.")
-    print("4. Choose 4 to print present cmdArray to console.")
-    print("5. Choose 5 to gen up this apps default internal Ubu app dB. ")
-    print("6. Choose 6 to EXIT program.")
+    tempHold = menuLineItems["0"]; tempHold = tempHold[0]; print( tempHold );
+    tempHold = menuLineItems["1"]; tempHold = tempHold[0]; print( tempHold );
+    tempHold = menuLineItems["2"]; tempHold = tempHold[0]; print( tempHold );
+    tempHold = menuLineItems["3"]; tempHold = tempHold[0]; print( tempHold );
+    tempHold = menuLineItems["4"]; tempHold = tempHold[0]; print( tempHold );
+    tempHold = menuLineItems["5"]; tempHold = tempHold[0]; print( tempHold );
+    tempHold = menuLineItems["6"]; tempHold = tempHold[0]; print( tempHold );
     line_choice = input("Which number do you want? ")
     line_choice = int(line_choice)
 
-    if line_choice <= 1:
-        out_bytes = line_by_line_term_interface(cmdArray)
-        menuInit( cmdArray )
+    if line_choice <= 0:
+        out_bytes = "Return to previous menu is chosen. sys.exit() "
+        print(); print( out_bytes )
+        sys.exit()
+    elif line_choice <= 1:
+        tempHold = menuLineItems["1"]; tempHold = tempHold[1]; ## print( tempHold );
+        out_bytes = menuLineReactions[ tempHold ](cmdArray); 
+        ## out_bytes = line_by_line_term_interface(cmdArray);
+        menuInit( cmdArray );
     elif line_choice <= 2:
-        out_bytes = line_by_line_term_interface(cmdArray)
+        tempHold = menuLineItems["2"]; tempHold = tempHold[1]; ## print( tempHold );
+        out_bytes = menuLineReactions[ tempHold ](cmdArray); 
+        ## out_bytes = line_by_line_term_interface(cmdArray)
         menuInit( cmdArray )
     elif line_choice <= 3:
-        cmdArray = line_by_line_term_interface(cmdArray)
+        tempHold = menuLineItems["3"]; tempHold = tempHold[1]; ## print( tempHold );
+        cmdArray = menuLineReactions[ tempHold ](cmdArray); 
+        ## cmdArray = line_by_line_term_interface(cmdArray)
         menuInit( cmdArray )
     elif line_choice <= 4:
-        screenPrintCmdArray( cmdArray )
+        tempHold = menuLineItems["4"]; tempHold = tempHold[1]; ## print( tempHold );
+        menuLineReactions[ tempHold ](cmdArray); 
+        ## screenPrintCmdArray( cmdArray )
         ### print( out_bytes )
         menuInit( cmdArray )
     elif line_choice <= 5:
-        cmdArray = genCmdArray()  # genCmdArray()
+        tempHold = menuLineItems["5"]; tempHold = tempHold[1]; ## print( tempHold );
+        cmdArray = menuLineReactions[ tempHold ](); 
+        ## cmdArray = genCmdArray()  # genCmdArray()
         # print( out_bytes )
         menuInit( cmdArray )
     elif line_choice <= 6:
