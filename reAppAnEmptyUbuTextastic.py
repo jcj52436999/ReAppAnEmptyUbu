@@ -1,4 +1,6 @@
-#  reAppAnEmptyUbu.py
+#  reAppAnEmptyUbuTextastic.py 
+#  this Textastic text editor is working 
+#  seems to be guessing at a time to save
 '''
 
 going to fork for menu change
