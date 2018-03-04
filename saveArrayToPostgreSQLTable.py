@@ -11,7 +11,7 @@ try:
     # use our connection values to establish a connection
     conn = psycopg2.connect(connect_str)
 except Exception as e:
-    print(">>>*** I AM UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
+    print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
     print(e)
 
 namedict = ({"first_name":"Joshua", "last_name":"Drake"},
