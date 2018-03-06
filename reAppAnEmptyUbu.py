@@ -783,7 +783,8 @@ def genCmdArraySample( cmdArrayWidth, cmdArrayHeight ):
     cmdArray[( 0, cmdArrLineNum )] = "postgresql-choose-stable-repo"
     # cmdArray[(cmdArrLineNum, 1)] = "sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list'" 
                                    # echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-    cmdArray[( 1, cmdArrLineNum )] = "sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'" 
+    # vvv  value has syntax error  vvv 
+    cmdArray[( 1, cmdArrLineNum )] = " " # sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'" 
     cmdArray[( 2, cmdArrLineNum )] = '("UbuSingleLineSimple",)'
     cmdArray[( 3, cmdArrLineNum )] = " "
 
@@ -866,14 +867,55 @@ def repeatAptGetShellBash(userPassWd, cmdArray):
     print("# jcj-jcj-jcj- ending process repeatAptGetShellBash - jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj")
     print(" ")
     return out_bytes
-
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+# start of createNewPostgresDbTable
+def createNewPostgresDbTable(cmdArray):
+
+    ## cmdArray = genCmdArraySample( 5, 30 )
+    ## print("Function genCmdArraySample: ", cmdArray)
+
+   print()
+   # return  ## cmdArray 
+# end of createNewPostgresDbTable
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+# start of writeRecordToPostgresDbTable
+def writeRecordToPostgresDbTable(cmdArray):
+
+    ## cmdArray = genCmdArraySample( 5, 30 )
+    ## print("Function genCmdArraySample: ", cmdArray)
+
+   print()
+   # return  ## cmdArray 
+# end of writeRecordToPostgresDbTable
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+# start of readRecordToPostgresDbTable
+def readRecordToPostgresDbTable(cmdArray):
+
+    ## cmdArray = genCmdArraySample( 5, 30 )
+    ## print("Function genCmdArraySample: ", cmdArray)
+
+   print()
+   # return  ## cmdArray 
+# end of readRecordToPostgresDbTable
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+
+
+
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of sysExiter()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 def sysExiter():
     sys.exit()
   
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of sysExiter()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
-
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the start of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # provides a serial line by line terminal interface
