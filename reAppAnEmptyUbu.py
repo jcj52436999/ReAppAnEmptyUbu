@@ -894,15 +894,15 @@ def writeRecordToPostgresDbTable(cmdArray):
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
-# start of readRecordToPostgresDbTable
-def readRecordToPostgresDbTable(cmdArray):
+# start of readRecordFromPostgresDbTable
+def readRecordFromPostgresDbTable(cmdArray):
 
     ## cmdArray = genCmdArraySample( 5, 30 )
     ## print("Function genCmdArraySample: ", cmdArray)
 
    print()
    # return  ## cmdArray 
-# end of readRecordToPostgresDbTable
+# end of readRecordFromPostgresDbTable
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 
