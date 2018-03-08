@@ -2,7 +2,7 @@
 #
 #
 
-# saveArrayToPostgreSQLTable.py
+# readArrayFromPostgreSQLTable.py
 
 import psycopg2
 # try to connect

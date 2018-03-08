@@ -909,31 +909,70 @@ def createNewPostgresDbTable(cmdArray):
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # start of writeRecordToPostgresDbTable
-def writeRecordToPostgresDbTable(cmdArray):
+def writeRecordToPostgresDbTable():
 
-    ## cmdArray = genCmdArraySample( 5, 30 )
-    ## print("Function genCmdArraySample: ", cmdArray)
+# try to connect
+    connect_str = "dbname='reappanemptyubu' user='jcj52436999' host='localhost' " + "password='STL2lmnm'"
 
-   print()
-   # return  ## cmdArray 
+    try:
+    # use our connection values to establish a connection
+        conn = psycopg2.connect(connect_str)
+    except Exception as e:
+        print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
+        print(e)
+
+    namedict = ({"first_name":"Joshua", "last_name":"Drake"},
+            {"first_name":"Steven", "last_name":"Foo"},
+            {"first_name":"David", "last_name":"Bar"})
+
+    try:
+        # create a psycopg2 cursor that can execute queries
+        cursr = conn.cursor()
+        # create a new table with a column called "name" IF NOT EXISTS  
+        cursr.execute("""CREATE TABLE IF NOT EXISTS tutorials (first_name char(40), last_name char(40))""")
+        cursr.executemany("""INSERT INTO tutorials (first_name,last_name) VALUES (%(first_name)s, %(last_name)s)""", namedict)
+        # run a SELECT statement   
+        cursr.execute("""SELECT * from tutorials""")
+        rows = cursr.fetchall()
+        print(rows) 
+        conn.commit()
+        cursr.close()
+        conn.close()
+    except Exception as e:
+        print(">>>*** Uh oh, can't connect. Invalid dbname, user or password?")
+        print(e)
+
+    return " "
 # end of writeRecordToPostgresDbTable
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # start of readRecordFromPostgresDbTable
-def readRecordFromPostgresDbTable(cmdArray):
+def readRecordFromPostgresDbTable():
 
-    ## cmdArray = genCmdArraySample( 5, 30 )
-    ## print("Function genCmdArraySample: ", cmdArray)
-
-   print()
-   # return  ## cmdArray 
+# try to connect
+    connect_str = "dbname='reappanemptyubu' user='jcj52436999' host='localhost' " + "password='STL2lmnm'"
+    try:
+        # use our connection values to establish a connection
+        conn = psycopg2.connect(connect_str)
+    except Exception as e:
+        print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
+        print(e)
+    try:
+        # create a psycopg2 cursor that can execute queries
+        cursr = conn.cursor()
+        # create a new table with a single column called "name"
+        # cursor.execute("""CREATE TABLE tutorials (name char(40));""")
+        # run a SELECT statement - no data in there, but we can try it
+        cursr.execute("""SELECT * FROM tutorials""")
+        rows = cursr.fetchall()
+        print(rows)
+    except Exception as e:
+        print(">>>*** Uh oh, can't connect. Invalid dbname, user or password?")
+        print(e)
+    return " "
 # end of readRecordFromPostgresDbTable
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
-
-
-
-
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of sysExiter()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
@@ -963,6 +1002,8 @@ def line_by_line_term_interface(cmdArray):
     print("5. Choose 5 for gen a file cmdArrVals.txt.")
     print("6. Choose 6 for return to previous menu. ")
     print("7. Choose 7 for cmdArray screen print check. ")
+    print("8. Choose 8 to write a sample record to a sample dB.")
+    print("9. Choose 9 to READ a sample record FROM a sample dB.")
     line_choice = input("Which number do you want? ")
     line_choice = int(line_choice)
 
@@ -1004,14 +1045,26 @@ def line_by_line_term_interface(cmdArray):
         # sys.exit(main())
         out_bytes = screenPrintCmdArray(cmdArray)
         line_by_line_term_interface(cmdArray)
-
+    elif line_choice <= 8:
+        out_bytes = "User chose to write a sample record to a sample dB. "
+        print(); print( out_bytes )
+        # sys.exit(main())
+        out_bytes = writeRecordToPostgresDbTable()
+        line_by_line_term_interface(cmdArray)
+    elif line_choice <= 9:
+        out_bytes = "User chose to READ a sample record FROm the sample dB. "
+        print(); print( out_bytes )
+        # sys.exit(main())
+        out_bytes = readRecordFromPostgresDbTable()
+        line_by_line_term_interface(cmdArray)
     else:
         ### cmdArray = genCmdArraySample()
         ### print("Function genCmdArraySample: ", cmdArray)
-
         out_bytes = "Entry is out of range." # line_by_line_term_interface()
         print(); print( out_bytes )
         line_by_line_term_interface(cmdArray) ## sys.exit(main())
+
+    return out_bytes
 
     print("")
     print("Need sudo password to install software.")
