@@ -24,6 +24,32 @@ cmdArray = {( w, h): " " for w in range(cmdArrayWidth) for h in range(cmdArrayHe
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # clean new SCREEN print of cmdArray
+def genStrVariables():
+    aSpace = str(32)      # String.fromCharCode(32);    
+    aDblQuote = str(34)   # String.fromCharCode(34); 
+    aSnglQuote = str(39)   # String.fromCharCode(39);  
+    aComma = str(44)      # String.fromCharCode(44); 
+    aColon = str(58)      # String.fromCharCode(58); 
+    aSemiColon = str(59)      # String.fromCharCode(59); 
+    aForeSlash = str(47)      # String.fromCharCode(47); 
+    aBackSlash = str(92)      # String.fromCharCode(92);  
+    aLF = str(10)      # String.fromCharCode(10); 
+    aCR = str(13)      # String.fromCharCode(13); 
+    aLfCr = aLF + aCR 
+    aCrLf = aCR + aLF 
+    aColonSpaceDblQuote = aColon + aSpace + aDblQuote
+    example = "example" 
+    screenWidthAvail = self.width()
+    screenHeightAvail = self.height()
+    '''
+    var screenWidthAvail = screen.availWidth ;  # in JS
+    var screenHeightAvail = screen.availHeight ; 
+    '''  
+    # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of genStrVariables()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+    # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+# clean new SCREEN print of cmdArray
 def genCmdArray():
 
     cmdArray = genCmdArraySample( 5, 99 )
@@ -167,10 +193,10 @@ def genaFile_cmdArrValsDotTxt():  # Gens txt file with some reversals
 # Generates as a dev default an array of apt-get command lines
 def genCmdArraySample( cmdArrayWidth, cmdArrayHeight ):
     if (cmdArrayWidth < 1):
-      w = 5; cmdArrayWidth = w;
+      w = 5; cmdArrayWidth = w
 
     if (cmdArrayHeight < 1):
-      h = 99; cmdArrayHeight = h;
+      h = 99; cmdArrayHeight = h
     '''  
     w = 5
     h = 99
@@ -929,6 +955,7 @@ def line_by_line_term_interface(cmdArray):
 
     line_choice = 1
     print("")
+    print("0. Choose 0 to return to previous menu.")
     print("1. Choose 1 for use of upgrade commands from original default array.")
     print("2. Choose 2 for .")
     print("3. Choose 3 for .")
@@ -939,7 +966,15 @@ def line_by_line_term_interface(cmdArray):
     line_choice = input("Which number do you want? ")
     line_choice = int(line_choice)
 
-    if line_choice <= 1:
+    if line_choice <= 0:
+        # out_bytes = "Return to previous menu is chosen. sys.exit() "
+        # print(); print( out_bytes )
+        # sys.exit()
+        out_bytes = "User chose to return to previous menu. "
+        print(); print( out_bytes )
+        return cmdArray  ## menuInit(cmdArray)  ## 
+    elif line_choice <= 1:
+        # if line_choice <= 1:
         cmdArray = genCmdArraySample()
         print("Function genCmdArraySample: ", cmdArray)
         line_by_line_term_interface()
