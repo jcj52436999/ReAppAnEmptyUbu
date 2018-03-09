@@ -913,17 +913,26 @@ def writeRecordToPostgresDbTable( db_connect_str, sql_table_name_str, dict_of_re
 
     db_connect_str = "dbname='reappanemptyubu' user='jcj52436999' host='localhost' password='STL2lmnm'"
     
-    sql_table_name_str = "ubu_install_commands"  # tutorials
+    sql_table_name_str = "ubu_install_commands_2"  # 
+    # sql_table_name_str = "tutorials"
 
-    sql_table_create_str = """CREATE TABLE IF NOT EXISTS tutorials (first_name char(40), last_name char(40))"""
+    # sql_table_create_str = """CREATE TABLE IF NOT EXISTS tutorials (first_name char(40), last_name char(40))"""
+    sql_table_create_str = "CREATE TABLE IF NOT EXISTS "
+    sql_table_create_str += sql_table_name_str
+    sql_table_create_str += " (dbXcoord char(40), dbYcoord char(40), dbCellContent char(40))"
 
-    sql_insert_execute_many_str = """INSERT INTO tutorials (first_name,last_name) VALUES (%(first_name)s, %(last_name)s)"""
-    
-    # namedict 
-    dict_of_records_to_write = ({"first_name":"Joshua", "last_name":"Drake"},
-            {"first_name":"Steven", "last_name":"Foo"},
-            {"first_name":"David", "last_name":"Bar"})
+    dict_of_records_to_write = (
+        {"dbXcoord":"Joshua", "dbYcoord":"Drake", "dbCellContent":"Drakiie"},
+        {"dbXcoord":"Steven", "dbYcoord":"Foo", "dbCellContent":"Drake"},
+        {"dbXcoord":"David", "dbYcoord":"Bar", "dbCellContent":"Drakie"})
      
+    sql_insert_execute_many_str = "INSERT INTO " 
+    sql_insert_execute_many_str += sql_table_name_str 
+    sql_insert_execute_many_str += " ( dbXcoord, dbYcoord, dbCellContent )" 
+    sql_insert_execute_many_str += " VALUES (%(dbXcoord)s, %(dbYcoord)s, %(dbCellContent)s) "
+    # sql_insert_execute_many_str += dict_of_records_to_write
+    # namedict 
+
     # try to connect
     try:
     # use our connection values to establish a connection
@@ -942,8 +951,10 @@ def writeRecordToPostgresDbTable( db_connect_str, sql_table_name_str, dict_of_re
         cursr.execute( sql_table_create_str )
         # executemany to write dict of records into table
         cursr.executemany(sql_insert_execute_many_str, dict_of_records_to_write)  #namedict
-        # run a SELECT statement   
-        cursr.execute("""SELECT * from tutorials""")
+        # cursr.executemany("""INSERT INTO tutorials (first_name,last_name) VALUES (%(first_name)s, %(last_name)s)""", namedict)
+
+        # run a SELECT statement to print out result  
+        cursr.execute( "SELECT * from " + sql_table_name_str )  # ("""SELECT * from tutorials""")
         rows = cursr.fetchall()
         print(rows) 
         conn.commit()
