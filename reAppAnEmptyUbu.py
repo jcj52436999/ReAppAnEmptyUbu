@@ -909,28 +909,39 @@ def createNewPostgresDbTable(cmdArray):
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # start of writeRecordToPostgresDbTable
-def writeRecordToPostgresDbTable():
+def writeRecordToPostgresDbTable( db_connect_str, sql_table_name_str, dict_of_records_to_write ):
 
-# try to connect
-    connect_str = "dbname='reappanemptyubu' user='jcj52436999' host='localhost' " + "password='STL2lmnm'"
+    db_connect_str = "dbname='reappanemptyubu' user='jcj52436999' host='localhost' password='STL2lmnm'"
+    
+    sql_table_name_str = "ubu_install_commands"  # tutorials
 
+    sql_table_create_str = """CREATE TABLE IF NOT EXISTS tutorials (first_name char(40), last_name char(40))"""
+
+    sql_insert_execute_many_str = """INSERT INTO tutorials (first_name,last_name) VALUES (%(first_name)s, %(last_name)s)"""
+    
+    # namedict 
+    dict_of_records_to_write = ({"first_name":"Joshua", "last_name":"Drake"},
+            {"first_name":"Steven", "last_name":"Foo"},
+            {"first_name":"David", "last_name":"Bar"})
+     
+    # try to connect
     try:
     # use our connection values to establish a connection
-        conn = psycopg2.connect(connect_str)
+        conn = psycopg2.connect(db_connect_str)
+        print(">>>*** Connection made as " + db_connect_str)
     except Exception as e:
         print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
         print(e)
+        return e  
 
-    namedict = ({"first_name":"Joshua", "last_name":"Drake"},
-            {"first_name":"Steven", "last_name":"Foo"},
-            {"first_name":"David", "last_name":"Bar"})
-
+    # try to write records
     try:
         # create a psycopg2 cursor that can execute queries
         cursr = conn.cursor()
-        # create a new table with a column called "name" IF NOT EXISTS  
-        cursr.execute("""CREATE TABLE IF NOT EXISTS tutorials (first_name char(40), last_name char(40))""")
-        cursr.executemany("""INSERT INTO tutorials (first_name,last_name) VALUES (%(first_name)s, %(last_name)s)""", namedict)
+        # create a new table IF NOT EXISTS  
+        cursr.execute( sql_table_create_str )
+        # executemany to write dict of records into table
+        cursr.executemany(sql_insert_execute_many_str, dict_of_records_to_write)  #namedict
         # run a SELECT statement   
         cursr.execute("""SELECT * from tutorials""")
         rows = cursr.fetchall()
@@ -941,7 +952,8 @@ def writeRecordToPostgresDbTable():
     except Exception as e:
         print(">>>*** Uh oh, can't connect. Invalid dbname, user or password?")
         print(e)
-
+        return e 
+  
     return " "
 # end of writeRecordToPostgresDbTable
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
@@ -955,6 +967,8 @@ def readRecordFromPostgresDbTable():
     try:
         # use our connection values to establish a connection
         conn = psycopg2.connect(connect_str)
+        print(">>>*** Connection made as " + connect_str)
+
     except Exception as e:
         print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
         print(e)
@@ -984,6 +998,8 @@ def writeSmplRecordToPostgresDbTable():
     try:
     # use our connection values to establish a connection
         conn = psycopg2.connect(connect_str)
+        print(">>>*** Connection made as " + connect_str)        
+
     except Exception as e:
         print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
         print(e)
@@ -1005,6 +1021,8 @@ def writeSmplRecordToPostgresDbTable():
         conn.commit()
         cursr.close()
         conn.close()
+        print(">>>*** Table record made as " + connect_str)
+
     except Exception as e:
         print(">>>*** Uh oh, can't connect. Invalid dbname, user or password?")
         print(e)
@@ -1022,6 +1040,8 @@ def readSmplRecordFromPostgresDbTable():
     try:
         # use our connection values to establish a connection
         conn = psycopg2.connect(connect_str)
+        print(">>>*** Connection made as " + connect_str)
+        
     except Exception as e:
         print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
         print(e)
@@ -1071,6 +1091,7 @@ def line_by_line_term_interface(cmdArray):
     print("7. Choose 7 for cmdArray screen print check. ")
     print("8. Choose 8 to write a sample record to a sample dB.")
     print("9. Choose 9 to READ a sample record FROM a sample dB.")
+    print("10. Choose 10 to WRITE a sample record TO a sample dB.")
     line_choice = input("Which number do you want? ")
     line_choice = int(line_choice)
 
@@ -1123,6 +1144,12 @@ def line_by_line_term_interface(cmdArray):
         print(); print( out_bytes )
         # sys.exit(main())
         out_bytes = readSmplRecordFromPostgresDbTable()
+        line_by_line_term_interface(cmdArray)
+    elif line_choice <= 10:
+        out_bytes = "User chose to WRITE a sample record TO the sample dB. "
+        print(); print( out_bytes )
+        # sys.exit(main())
+        out_bytes = writeRecordToPostgresDbTable(" ", " ", " ")
         line_by_line_term_interface(cmdArray)
     else:
         ### cmdArray = genCmdArraySample()
