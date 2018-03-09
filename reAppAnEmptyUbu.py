@@ -915,21 +915,26 @@ def writeRecordToPostgresDbTable( db_connect_str, sql_table_name_str, dict_of_re
     
     sql_table_name_str = "ubu_install_commands_2"  # 
     # sql_table_name_str = "tutorials"
+    sql_table_create_columns_str = " (dbXcoord char(40), dbYcoord char(40), dbCellContent char(40))"
+
 
     # sql_table_create_str = """CREATE TABLE IF NOT EXISTS tutorials (first_name char(40), last_name char(40))"""
     sql_table_create_str = "CREATE TABLE IF NOT EXISTS "
     sql_table_create_str += sql_table_name_str
-    sql_table_create_str += " (dbXcoord char(40), dbYcoord char(40), dbCellContent char(40))"
+    sql_table_create_str += sql_table_create_columns_str
 
     dict_of_records_to_write = (
         {"dbXcoord":"Joshua", "dbYcoord":"Drake", "dbCellContent":"Drakiie"},
         {"dbXcoord":"Steven", "dbYcoord":"Foo", "dbCellContent":"Drake"},
         {"dbXcoord":"David", "dbYcoord":"Bar", "dbCellContent":"Drakie"})
-     
+
+    sql_insert_columns_str = " ( dbXcoord, dbYcoord, dbCellContent )" 
+    sql_insert_values = "%"+"(dbXcoord)s, "+"%"+"(dbYcoord)s, "+"%"+"(dbCellContent)s" 
+
     sql_insert_execute_many_str = "INSERT INTO " 
     sql_insert_execute_many_str += sql_table_name_str 
-    sql_insert_execute_many_str += " ( dbXcoord, dbYcoord, dbCellContent )" 
-    sql_insert_execute_many_str += " VALUES (%(dbXcoord)s, %(dbYcoord)s, %(dbCellContent)s) "
+    sql_insert_execute_many_str += sql_insert_columns_str 
+    sql_insert_execute_many_str += " VALUES ( " + sql_insert_values + " ) "
     # sql_insert_execute_many_str += dict_of_records_to_write
     # namedict 
 
@@ -961,7 +966,7 @@ def writeRecordToPostgresDbTable( db_connect_str, sql_table_name_str, dict_of_re
         cursr.close()
         conn.close()
     except Exception as e:
-        print(">>>*** Uh oh, can't connect. Invalid dbname, user or password?")
+        print(">>>*** Uh oh, can't write. Invalid dbname, user or password?")
         print(e)
         return e 
   
