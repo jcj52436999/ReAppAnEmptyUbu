@@ -14,6 +14,7 @@ import sqlite3
 import psycopg2
 import django
 
+
 '''
 w = 5
 h = 99
