@@ -103,15 +103,15 @@ def screenPrintCmdArray(cmdArray):
 
     #  cmdArrValDotTxt.close()
     print()
-    return  ## cmdArray 
+    return  " " ## cmdArray 
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
-def genaFile_cmdArrValsDotCsv():
-
-    cmdArray = genCmdArraySample()
+def genaFile_cmdArrValsDotCsv( cmdArrayWidth, cmdArrayHeight ):
+    # genCmdArraySample( cmdArrayWidth, cmdArrayHeight )
+    cmdArray = genCmdArraySample( cmdArrayWidth, cmdArrayHeight ) # genCmdArraySample()
     ## print("Function genCmdArraySample: ", cmdArray)
 
     cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
@@ -137,9 +137,9 @@ def genaFile_cmdArrValsDotCsv():
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
-def genaFile_cmdArrHeadersAndValsIntoListOfDicts():
+def genaFile_cmdArrHeadersAndValsIntoListOfDicts( cmdArrayWidth, cmdArrayHeight ):
 
-    cmdArray = genCmdArraySample()
+    cmdArray = genCmdArraySample( cmdArrayWidth, cmdArrayHeight )
     ## print("Function genCmdArraySample: ", cmdArray)
 
     cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
@@ -165,9 +165,9 @@ def genaFile_cmdArrHeadersAndValsIntoListOfDicts():
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
-def genaFile_cmdArrValsDotTxt():  # Gens txt file with some reversals
+def genaFile_cmdArrValsDotTxt( cmdArrayWidth, cmdArrayHeight ):  # Gens txt file with some reversals
 
-    cmdArray = genCmdArraySample()
+    cmdArray = genCmdArraySample( cmdArrayWidth, cmdArrayHeight )
     ## print("Function genCmdArraySample: ", cmdArray)
 
     cmdArrValDotTxt = open('cmdArrVals.txt', 'w')
@@ -187,7 +187,7 @@ def genaFile_cmdArrValsDotTxt():  # Gens txt file with some reversals
 
     cmdArrValDotTxt.close()
     print()
-    return
+    return " "
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the start of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
@@ -1112,6 +1112,8 @@ def line_by_line_term_interface(cmdArray):
     line_choice = input("Which number do you want? ")
     line_choice = int(line_choice)
 
+    cmdArrayWidth = 4 ; cmdArrayHeight = 100 ; 
+
     if line_choice <= 0:
         # out_bytes = "Return to previous menu is chosen. sys.exit() "
         # print(); print( out_bytes )
@@ -1121,25 +1123,26 @@ def line_by_line_term_interface(cmdArray):
         return cmdArray  ## menuInit(cmdArray)  ## 
     elif line_choice <= 1:
         # if line_choice <= 1:
-        cmdArray = genCmdArraySample()
+        cmdArray = genCmdArraySample( cmdArrayWidth, cmdArrayHeight )
+        # cmdArray = genCmdArraySample( 4, 100 )
         print("Function genCmdArraySample: ", cmdArray)
-        line_by_line_term_interface()
+        line_by_line_term_interface( cmdArray )
     elif line_choice <= 2:
-        cmdArray = genCmdArraySample()
+        cmdArray = genCmdArraySample( cmdArrayWidth, cmdArrayHeight )
         print("Function genCmdArraySample: ", cmdArray)
-        line_by_line_term_interface()
+        line_by_line_term_interface( cmdArray )
     elif line_choice <= 3:
-        cmdArray = genCmdArraySample()
+        cmdArray = genCmdArraySample( 4, 100 )
         print("Function genCmdArraySample: ", cmdArray)
-        line_by_line_term_interface()
+        line_by_line_term_interface( cmdArray )
     elif line_choice <= 4:
-        out_bytes = genaFile_cmdArrValsDotTxt()
+        out_bytes = genaFile_cmdArrValsDotTxt( cmdArrayWidth, cmdArrayHeight )
         print( out_bytes )
-        line_by_line_term_interface(cmdArray)
+        line_by_line_term_interface( cmdArray )
     elif line_choice <= 5:
-        out_bytes = genaFile_cmdArrValsDotTxt()
+        out_bytes = genaFile_cmdArrValsDotTxt( cmdArrayWidth, cmdArrayHeight )
         print( out_bytes )
-        line_by_line_term_interface(cmdArray)
+        line_by_line_term_interface( cmdArray )
     elif line_choice <= 6:
         out_bytes = "User chose to return to previous menu. "
         print(); print( out_bytes )
@@ -1328,7 +1331,8 @@ def main(argv=None):
 
     menuInit( cmdArray )
 
-    # out_bytes.wait()
+    # out_bytes.wait() 
+    out_bytes = " " 
     print("# jcj-jcj-jcj- Function Main is ending with sys.exit(): ", out_bytes)
 
     print(" ")
