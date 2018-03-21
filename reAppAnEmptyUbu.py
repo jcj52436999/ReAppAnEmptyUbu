@@ -1,9 +1,12 @@
 #  reAppAnEmptyUbu.py
 '''
+reAppAnEmptyUbu.py
+@author Joe Jackson 
 
-going to fork for menu change
-not sure why github is not communicating
-needed to add github as a connection
+reAppAnEmptyUbu.py-2018-03-21-0215-making-generalizable-menus
+reAppAnEmptyUbu.py-2018-03-21-0212-months-of-off-and-on-work
+
+
 
 '''
 
@@ -25,7 +28,8 @@ cmdArray = {( w, h): " " for w in range(cmdArrayWidth) for h in range(cmdArrayHe
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # clean new SCREEN print of cmdArray
-def genStrVariables():
+def genStrVariables():   # stringPiecesDict
+    '''
     aSpace = str(32)      # String.fromCharCode(32);    
     aDblQuote = str(34)   # String.fromCharCode(34); 
     aSnglQuote = str(39)   # String.fromCharCode(39);  
@@ -40,14 +44,40 @@ def genStrVariables():
     aCrLf = aCR + aLF 
     aColonSpaceDblQuote = aColon + aSpace + aDblQuote
     example = "example" 
+    '''
+    '''
     screenWidthAvail = self.width()
     screenHeightAvail = self.height()
-    '''
+    
     var screenWidthAvail = screen.availWidth ;  # in JS
     var screenHeightAvail = screen.availHeight ; 
     '''  
+    stringPiecesDict = ({"aSpace": str(32), "aDblQuote": str(34)},
+            {"aSnglQuote": str(39), "aComma": str(44)},
+            {"aColon": str(58), "aSemiColon": str(59)},
+            {"aForeSlash": str(47), "aBackSlash": str(92)},
+            {"aLF": str(10), "aCR": str(13)},
+            {"aLfCr": str(10) + str(13), "aCrLf": str(13) + str(10)},
+            {"aColonSpaceDblQuote": str(58) + str(32) + str(34)}
+            )
+    return stringPiecesDict
+
     # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of genStrVariables()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
     # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+
+
+def inputIntegerOnly( promptString ): 
+    while True:
+        inputted = input( promptString )
+        if inputted == "stop":
+            print( "Stop chosen. ") 
+            sys.exit()  #  break
+        elif not inputted.isdigit():
+            print( "Must be a number! ")
+        else: 
+            inputted = int(inputted)
+            return inputted
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # clean new SCREEN print of cmdArray
@@ -1006,6 +1036,7 @@ def readRecordFromPostgresDbTable():
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
 # start of writeSmplRecordToPostgresDbTable
 def writeSmplRecordToPostgresDbTable():
 
@@ -1096,6 +1127,8 @@ def line_by_line_term_interface(cmdArray):
     out_bytes = subprocess.check_output(['ls'])
     print(out_bytes)
 
+    stringPiecesDict = genStrVariables()   # stringPiecesDict
+
     line_choice = 1
     print("")
     print("0. Choose 0 to return to previous menu.")
@@ -1109,9 +1142,10 @@ def line_by_line_term_interface(cmdArray):
     print("8. Choose 8 to write a sample record to a sample dB.")
     print("9. Choose 9 to READ a sample record FROM a sample dB.")
     print("10. Choose 10 to WRITE a sample record TO a sample dB.")
-    line_choice = input("Which number do you want? ")
-    line_choice = int(line_choice)
 
+    line_choice = inputIntegerOnly("Which number do you want? ")
+        # line_choice = int(line_choice)  
+ 
     cmdArrayWidth = 4 ; cmdArrayHeight = 100 ; 
 
     if line_choice <= 0:
@@ -1171,6 +1205,10 @@ def line_by_line_term_interface(cmdArray):
         # sys.exit(main())
         out_bytes = writeRecordToPostgresDbTable(" ", " ", " ")
         line_by_line_term_interface(cmdArray)
+    elif line_choice > 98:
+        out_bytes = "User chose to exit this menu. "
+        print(); print( out_bytes )
+        return  # sys.exit(main())
     else:
         ### cmdArray = genCmdArraySample()
         ### print("Function genCmdArraySample: ", cmdArray)
@@ -1238,13 +1276,26 @@ def menuInit(cmdArray):
         tempHold = menuLineItems["4"]; tempHold = tempHold[0]; print( tempHold );
         tempHold = menuLineItems["5"]; tempHold = tempHold[0]; print( tempHold );
         tempHold = menuLineItems["6"]; tempHold = tempHold[0]; print( tempHold );
-        line_choice = input("Which number do you want? ")
-        line_choice = int(line_choice)   
-
+        line_choice = inputIntegerOnly("Which number do you want? ")
+        # line_choice = int(line_choice)  
+        ''' 
+        def inputIntegerOnly( promptString ): 
+            while True:
+                inputted = input( promptString )
+                if inputted == "stop":
+                print( "Stop chosen. ") 
+                break
+            elif not inputted.isdigit():
+                print( "Must be a number! ")
+            else: 
+                inputted = int(inputted)
+                return inputted
+        ''' 
+ 
         if line_choice <= 0:
             out_bytes = "Return to previous menu is chosen. sys.exit() "
             print(); print( out_bytes )
-            sys.exit()
+            return   #sys.exit()
         elif line_choice <= 1:
             tempHold = menuLineItems["1"]; tempHold = tempHold[1]; ## print( tempHold );
             out_bytes = menuLineReactions[ tempHold ](cmdArray); 
@@ -1277,16 +1328,18 @@ def menuInit(cmdArray):
             print(); print( out_bytes )
             tempHold = menuLineItems["6"]; tempHold = tempHold[1]; ## print( tempHold );
             cmdArray = menuLineReactions[ tempHold ](); 
-            ### sys.exit()
+            ### sys.exit()  
+        elif line_choice > 98:
+            out_bytes = "# jcj-jcj-jcj- Function Menuinit is ending with sys.exit(): "
+            print(); print( out_bytes )
+            # print("# jcj-jcj-jcj- Function Menuinit is ending with sys.exit(): ", out_bytes)
+            return  # sys.exit()
         else:
             out_bytes = "Entry is out of range." # line_by_line_term_interface()
             print(); print( out_bytes )
             ### menuInit( cmdArray )
 
 
-        if(line_choice > 98):
-            print("# jcj-jcj-jcj- Function Menuinit is ending with sys.exit(): ", out_bytes)
-            sys.exit()
 
     # out_bytes.wait()
 
