@@ -1239,7 +1239,7 @@ def menuInit(cmdArray):
         tempHold = menuLineItems["5"]; tempHold = tempHold[0]; print( tempHold );
         tempHold = menuLineItems["6"]; tempHold = tempHold[0]; print( tempHold );
         line_choice = input("Which number do you want? ")
-        line_choice = int(line_choice)
+        line_choice = int(line_choice)   
 
         if line_choice <= 0:
             out_bytes = "Return to previous menu is chosen. sys.exit() "
