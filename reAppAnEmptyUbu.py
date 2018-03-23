@@ -64,19 +64,25 @@ def genStrVariables():   # stringPiecesDict
     # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of genStrVariables()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
     # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
-
-
 def inputIntegerOnly( promptString ): 
     while True:
-        inputted = input( promptString )
-        if inputted == "stop":
-            print( "Stop chosen. ") 
-            sys.exit()  #  break
-        elif not inputted.isdigit():
+        # entered = eval(input( promptString ))
+        entered = (input( promptString ))
+        print("You just entered: ", entered )
+        if entered == "stop":
+            # print( "Stop chosen. ") 
+            reEntered = (input( "Stop chosen, all RAM data will be lost, are you sure? y or n: " ))  
+            if reEntered == "y" or reEntered == "Y":
+                sys.exit()
+            else: 
+                print( "Staying for more entry. ")
+            # sys.exit()  #  break
+        elif not entered.isdigit():
+        # elif (( entered.isdigit() != True )):
             print( "Must be a number! ")
         else: 
-            inputted = int(inputted)
-            return inputted
+            entered = int(entered)
+            return entered
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # clean new SCREEN print of cmdArray
@@ -151,7 +157,7 @@ def genaFile_cmdArrValsDotCsv( cmdArrayWidth, cmdArrayHeight ):
             strOut = "cmdArray[(" + str(column) + ", " + str(row) + ")] = " + '"' + cmdArray[(column, row)] + '"'
             print( strOut )
             strOut = "    cmdArray[(" + str(row) + ", " + str(column) + ")] = " + '"' + cmdArray[(column, row)] + '"'
-            print("    To" + strOut)
+            print(("    To" + strOut))
             cmdArrValDotTxt.write(strOut + '\n')
 
         print()
@@ -179,7 +185,7 @@ def genaFile_cmdArrHeadersAndValsIntoListOfDicts( cmdArrayWidth, cmdArrayHeight 
             strOut = "cmdArray[(" + str(column) + ", " + str(row) + ")] = " + '"' + cmdArray[(column, row)] + '"'
             print( strOut )
             strOut = "    cmdArray[(" + str(row) + ", " + str(column) + ")] = " + '"' + cmdArray[(column, row)] + '"'
-            print("    To" + strOut)
+            print(("    To" + strOut))
             cmdArrValDotTxt.write(strOut + '\n')
 
         print()
@@ -207,7 +213,7 @@ def genaFile_cmdArrValsDotTxt( cmdArrayWidth, cmdArrayHeight ):  # Gens txt file
             strOut = "cmdArray[(" + str(column) + ", " + str(row) + ")] = " + '"' + cmdArray[(column, row)] + '"'
             print( strOut )
             strOut = "    cmdArray[(" + str(row) + ", " + str(column) + ")] = " + '"' + cmdArray[(column, row)] + '"'
-            print("    To" + strOut)
+            print(("    To" + strOut))
             cmdArrValDotTxt.write(strOut + '\n')
 
         print()
@@ -879,7 +885,7 @@ def aptGetShellBash(cmdLine):
     # echo "yourpassword" | sudo -S apt-get autoremove
     # proc = subprocess.Popen('apt-get install -y filetoinstall', shell=True, stdin=None, stdout=open("/dev/null", "w"), stderr=None, executable="/bin/bash")
     out_bytes.wait()
-    print("# jcj-jcj-jcj- Function aptGetShellBash ending process of a single command," + " returned: ", out_bytes)
+    print(("# jcj-jcj-jcj- Function aptGetShellBash ending process of a single command," + " returned: ", out_bytes))
     # print(" ")
 
     # print("Function aptGetShellBash: ", out_bytes)
@@ -894,15 +900,15 @@ def repeatAptGetShellBash(userPassWd, cmdArray):
     print("# jcj-jcj-jcj- begining process repeatAptGetShellBash - jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj")
     print(" ")
     numCols = len(cmdArray)
-    print("numCols is: ", numCols)
-    numRows = map(len, cmdArray)
+    print(("numCols is: ", numCols))
+    numRows = list(map(len, cmdArray))
     # numRows = int(numRows)
-    print("numRows is: ", numRows)
+    print(("numRows is: ", numRows))
     # for n_n in range ( 1, numRows):
     n_n = 1
     for row in cmdArray:
-        print("n_n is: ", n_n)
-        print("# jcj-jcj-jcj- Function repeatAptGetShellBash running this single command: " + cmdArray[(n_n, 1)])
+        print(("n_n is: ", n_n))
+        print(("# jcj-jcj-jcj- Function repeatAptGetShellBash running this single command: " + cmdArray[(n_n, 1)]))
         cmdLine = "echo " + userPassWd + " | " + cmdArray[(n_n, 1)]
 
         if "UbuSingleLineSimple" in cmdArray[(n_n, 2)] :    ##// cmdArray[(n_n, 2)] == "UbuSingleLineSimple":
@@ -911,7 +917,7 @@ def repeatAptGetShellBash(userPassWd, cmdArray):
             print("# jcj-jcj-jcj- not an UbuSingleLineSimple")
 
         out_bytes.wait()
-        print("# jcj-jcj-jcj- Function repeatAptGetShellBash ending process of single command: " + cmdArray[(n_n, 1)] + " , returned: ", out_bytes)
+        print(("# jcj-jcj-jcj- Function repeatAptGetShellBash ending process of single command: " + cmdArray[(n_n, 1)] + " , returned: ", out_bytes))
         print(" ")
         n_n = n_n + 1
         if cmdArray[(n_n, 1)] == " ":
@@ -972,7 +978,7 @@ def writeRecordToPostgresDbTable( db_connect_str, sql_table_name_str, dict_of_re
     try:
     # use our connection values to establish a connection
         conn = psycopg2.connect(db_connect_str)
-        print(">>>*** Connection made as " + db_connect_str)
+        print((">>>*** Connection made as " + db_connect_str))
     except Exception as e:
         print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
         print(e)
@@ -1013,7 +1019,7 @@ def readRecordFromPostgresDbTable():
     try:
         # use our connection values to establish a connection
         conn = psycopg2.connect(connect_str)
-        print(">>>*** Connection made as " + connect_str)
+        print((">>>*** Connection made as " + connect_str))
 
     except Exception as e:
         print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
@@ -1045,7 +1051,7 @@ def writeSmplRecordToPostgresDbTable():
     try:
     # use our connection values to establish a connection
         conn = psycopg2.connect(connect_str)
-        print(">>>*** Connection made as " + connect_str)        
+        print((">>>*** Connection made as " + connect_str))        
 
     except Exception as e:
         print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
@@ -1068,7 +1074,7 @@ def writeSmplRecordToPostgresDbTable():
         conn.commit()
         cursr.close()
         conn.close()
-        print(">>>*** Table record made as " + connect_str)
+        print((">>>*** Table record made as " + connect_str))
 
     except Exception as e:
         print(">>>*** Uh oh, can't connect. Invalid dbname, user or password?")
@@ -1087,7 +1093,7 @@ def readSmplRecordFromPostgresDbTable():
     try:
         # use our connection values to establish a connection
         conn = psycopg2.connect(connect_str)
-        print(">>>*** Connection made as " + connect_str)
+        print((">>>*** Connection made as " + connect_str))
         
     except Exception as e:
         print(">>>*** ReAppAnEmptyUbu is UNABLE TO CONNECT TO THE DATABASE. Invalid dbname, user or password?")
@@ -1158,15 +1164,15 @@ def line_by_line_term_interface(cmdArray):
         # if line_choice <= 1:
         cmdArray = genCmdArraySample( cmdArrayWidth, cmdArrayHeight )
         # cmdArray = genCmdArraySample( 4, 100 )
-        print("Function genCmdArraySample: ", cmdArray)
+        print(("Function genCmdArraySample: ", cmdArray))
         line_by_line_term_interface( cmdArray )
     elif line_choice <= 2:
         cmdArray = genCmdArraySample( cmdArrayWidth, cmdArrayHeight )
-        print("Function genCmdArraySample: ", cmdArray)
+        print(("Function genCmdArraySample: ", cmdArray))
         line_by_line_term_interface( cmdArray )
     elif line_choice <= 3:
         cmdArray = genCmdArraySample( 4, 100 )
-        print("Function genCmdArraySample: ", cmdArray)
+        print(("Function genCmdArraySample: ", cmdArray))
         line_by_line_term_interface( cmdArray )
     elif line_choice <= 4:
         out_bytes = genaFile_cmdArrValsDotTxt( cmdArrayWidth, cmdArrayHeight )
@@ -1293,8 +1299,16 @@ def menuInit(cmdArray):
  
         if line_choice <= 0:
             out_bytes = "Return to previous menu is chosen. sys.exit() "
-            print(); print( out_bytes )
-            return   #sys.exit()
+            print(); print( out_bytes ) 
+
+            reEntered = (input( "Stop chosen, all RAM data will be lost, are you sure? y or n: " ))  
+            if reEntered == "y" or reEntered == "Y":
+                return   #sys.exit()       sys.exit()
+            else: 
+                print( "Staying for more entry. ")
+            # sys.exit()  #  break
+
+
         elif line_choice <= 1:
             tempHold = menuLineItems["1"]; tempHold = tempHold[1]; ## print( tempHold );
             out_bytes = menuLineReactions[ tempHold ](cmdArray); 
@@ -1357,7 +1371,7 @@ def main(argv=None):
     print(" ")
     print("# jcj-jcj-jcj- START OF PROGRAM - jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj")
     thisProgramIs = "reAppAnEmptyUbu.py"
-    print("Start of program " + thisProgramIs)
+    print(("Start of program " + thisProgramIs))
     print(" ")
     import curses
     import getpass
@@ -1365,7 +1379,7 @@ def main(argv=None):
     import shutil
     import subprocess
     import pprint
-    #  import pformat  
+    # import pformat  
     from subprocess import Popen, PIPE, STDOUT
 
     # import urwid
@@ -1385,7 +1399,7 @@ def main(argv=None):
 
     # out_bytes.wait() 
     out_bytes = " " 
-    print("# jcj-jcj-jcj- Function Main is ending with sys.exit(): ", out_bytes)
+    print(("# jcj-jcj-jcj- Function Main is ending with sys.exit(): ", out_bytes))
 
     print(" ")
     print("# jcj-jcj-jcj- END OF PROGRAM - jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj")
@@ -1393,3 +1407,4 @@ def main(argv=None):
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of main   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 if __name__ == "__main__":
     sys.exit(main())
+
