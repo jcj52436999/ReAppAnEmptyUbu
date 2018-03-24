@@ -3,8 +3,9 @@
 reAppAnEmptyUbu.py
 @author Joe Jackson 
 
-reAppAnEmptyUbu.py-2018-03-21-0215-making-generalizable-menus
-reAppAnEmptyUbu.py-2018-03-21-0212-months-of-off-and-on-work
+reAppAnEmptyUbu-201803231857-postgres-menus-now-work-rudimen-tosh-and-acer.py
+reAppAnEmptyUbu-2018-03-21-0215-making-generalizable-menus.py
+reAppAnEmptyUbu-2018-03-21-0212-months-of-off-and-on-work.py
 
 
 '''
@@ -64,6 +65,8 @@ def genStrVariables():   # stringPiecesDict
     # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of genStrVariables()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
     # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+# receive an input integer from keyboard
 def inputIntegerOnly( promptString ): 
     while True:
         # entered = eval(input( promptString ))
@@ -83,6 +86,8 @@ def inputIntegerOnly( promptString ):
         else: 
             entered = int(entered)
             return entered
+    # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of inputIntegerOnly( promptString )   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+    # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # clean new SCREEN print of cmdArray
