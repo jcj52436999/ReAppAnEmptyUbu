@@ -16,6 +16,7 @@ import json
 import sqlite3
 import psycopg2
 import django
+import numpy
 
 
 '''
@@ -1270,8 +1271,9 @@ def menuInit(cmdArray):
       'line_by_line_term_interface': line_by_line_term_interface,
       'menuInit': menuInit,
       'screenPrintCmdArray': screenPrintCmdArray, 
-      'sysExiter': sysExiter 
-      ### 'sys.exit()': sys.exit()
+      'sysExiter': sysExiter, 
+      ## ' ': " "
+      'sys.exit()': "sys.exit()"  ## sys.exit()
       } 
 
     while True:
@@ -1342,16 +1344,38 @@ def menuInit(cmdArray):
             # print( out_bytes )
             ### menuInit( cmdArray )
         elif line_choice <= 6:
-            out_bytes = "Exit program is chosen. sys.exit() "
-            print(); print( out_bytes )
-            tempHold = menuLineItems["6"]; tempHold = tempHold[1]; ## print( tempHold );
-            cmdArray = menuLineReactions[ tempHold ](); 
-            ### sys.exit()  
+            out_bytes = "Exit program is chosen. sys.exit() ";
+            print(); print( out_bytes );
+            tempHold = menuLineItems["6"]; 
+            tempHold = tempHold[1]; ## print( tempHold );
+            ## cmdArray = " " ;   
+            ## cmdArray = menuLineReactions[ tempHold ](); 
+
+            reEntered = (input( "Stop chosen, all RAM data will be lost, are you sure? y or n: " ))  
+            if reEntered == "y" or reEntered == "Y":
+                return   #sys.exit()       sys.exit()
+            else: 
+                print( "Staying for more entry. ")
+            # sys.exit()  #  break
+
+
+            ## return ### 
+            ## sys.exit() ; 
         elif line_choice > 98:
             out_bytes = "# jcj-jcj-jcj- Function Menuinit is ending with sys.exit(): "
             print(); print( out_bytes )
             # print("# jcj-jcj-jcj- Function Menuinit is ending with sys.exit(): ", out_bytes)
-            return  # sys.exit()
+
+
+            reEntered = (input( "Stop chosen, all RAM data will be lost, are you sure? y or n: " ))  
+            if reEntered == "y" or reEntered == "Y":
+                return   #sys.exit()       sys.exit()
+            else: 
+                print( "Staying for more entry. ")
+            # sys.exit()  #  break
+
+
+            ## return  # sys.exit()
         else:
             out_bytes = "Entry is out of range." # line_by_line_term_interface()
             print(); print( out_bytes )
