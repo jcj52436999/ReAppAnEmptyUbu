@@ -18,6 +18,7 @@ import psycopg2
 import django
 import numpy 
 
+
 '''
 w = 5
 h = 99
