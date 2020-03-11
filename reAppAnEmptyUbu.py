@@ -16,8 +16,7 @@ import json
 import sqlite3
 import psycopg2
 import django
-import numpy
-
+import numpy 
 
 '''
 w = 5
@@ -1402,13 +1401,15 @@ def main(argv=None):
     thisProgramIs = "reAppAnEmptyUbu.py"
     print(("Start of program " + thisProgramIs))
     print(" ")
+
     import curses
     import getpass
     import os
     import shutil
     import subprocess
     import pprint
-    # import pformat  
+    # import pformat 
+     
     from subprocess import Popen, PIPE, STDOUT
 
     # import urwid
