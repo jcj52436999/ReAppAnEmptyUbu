@@ -3,7 +3,8 @@
 reAppAnEmptyUbu.py
 @author Joe Jackson 
 
-reAppAnEmptyUbu-201803231857-postgres-menus-now-work-rudimen-tosh-and-acer.py
+reAppAnEmptyUbu-2020-03-11-0150-now-github-and-vsc-functional.py
+reAppAnEmptyUbu-2018-03-23-1857-postgres-menus-now-work-rudimen-tosh-and-acer.py
 reAppAnEmptyUbu-2018-03-21-0215-making-generalizable-menus.py
 reAppAnEmptyUbu-2018-03-21-0212-months-of-off-and-on-work.py
 
@@ -17,7 +18,6 @@ import sqlite3
 import psycopg2
 import django
 import numpy 
-
 
 '''
 w = 5
