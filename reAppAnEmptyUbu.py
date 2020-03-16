@@ -71,6 +71,7 @@ def genStrVariables():   # stringPiecesDict
 def inputIntegerOnly( promptString ): 
     while True:
         # entered = eval(input( promptString ))
+        
         entered = (input( promptString ))
         print("You just entered: ", entered )
         if entered == "stop":
