@@ -1121,6 +1121,15 @@ def readSmplRecordFromPostgresDbTable():
 # end of readSmplRecordFromPostgresDbTable
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
+
+
+
+# jsons
+
+
+
+
+
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr  jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of sysExiter()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 def sysExiter():
