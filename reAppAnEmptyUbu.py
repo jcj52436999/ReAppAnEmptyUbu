@@ -1,15 +1,19 @@
-#  reAppAnEmptyUbu.py
-'''
-reAppAnEmptyUbu.py
-@author Joe Jackson 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-reAppAnEmptyUbu-2020-03-11-0150-now-github-and-vsc-functional.py
-reAppAnEmptyUbu-2018-03-23-1857-postgres-menus-now-work-rudimen-tosh-and-acer.py
-reAppAnEmptyUbu-2018-03-21-0215-making-generalizable-menus.py
-reAppAnEmptyUbu-2018-03-21-0212-months-of-off-and-on-work.py
+# '''
+# reAppAnEmptyUbu.py
+# Created originally in 2018
+# @author Joe Jackson 
+
+# reAppAnEmptyUbu.py-2021-03-08-1640-just noting a general restart in efforts here
+# reAppAnEmptyUbu.py-2020-03-11-0150-now-github-and-vsc-functional.py
+# reAppAnEmptyUbu.py-2018-03-23-1857-postgres-menus-now-work-rudimen-tosh-and-acer.py
+# reAppAnEmptyUbu.py-2018-03-21-0215-making-generalizable-menus.py
+# reAppAnEmptyUbu.py-2018-03-21-0212-months-of-off-and-on-work.py
 
 
-'''
+# '''
 
 import sys
 import pickle
@@ -19,40 +23,41 @@ import psycopg2
 import django
 import numpy 
 
-'''
-w = 5
-h = 99
-cmdArrayWidth = w
-cmdArrayHeight = h 
-cmdArray = {( w, h): " " for w in range(cmdArrayWidth) for h in range(cmdArrayHeight)}
-'''
+# '''
+# w = 5
+# h = 99
+# cmdArrayWidth = w
+# cmdArrayHeight = h 
+# cmdArray = {( w, h): " " for w in range(cmdArrayWidth) for h in range(cmdArrayHeight)}
+# '''
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # clean new SCREEN print of cmdArray
 def genStrVariables():   # stringPiecesDict
-    '''
-    aSpace = str(32)      # String.fromCharCode(32);    
-    aDblQuote = str(34)   # String.fromCharCode(34); 
-    aSnglQuote = str(39)   # String.fromCharCode(39);  
-    aComma = str(44)      # String.fromCharCode(44); 
-    aColon = str(58)      # String.fromCharCode(58); 
-    aSemiColon = str(59)      # String.fromCharCode(59); 
-    aForeSlash = str(47)      # String.fromCharCode(47); 
-    aBackSlash = str(92)      # String.fromCharCode(92);  
-    aLF = str(10)      # String.fromCharCode(10); 
-    aCR = str(13)      # String.fromCharCode(13); 
-    aLfCr = aLF + aCR 
-    aCrLf = aCR + aLF 
-    aColonSpaceDblQuote = aColon + aSpace + aDblQuote
-    example = "example" 
-    '''
-    '''
+    #'''
+    #aSpace = str(32)      # String.fromCharCode(32);    
+    #aDblQuote = str(34)   # String.fromCharCode(34); 
+    #aSnglQuote = str(39)   # String.fromCharCode(39);  
+    #aComma = str(44)      # String.fromCharCode(44); 
+    #aColon = str(58)      # String.fromCharCode(58); 
+    #aSemiColon = str(59)      # String.fromCharCode(59); 
+    #aForeSlash = str(47)      # String.fromCharCode(47); 
+    #aBackSlash = str(92)      # String.fromCharCode(92);  
+    #aLF = str(10)      # String.fromCharCode(10); 
+    #aCR = str(13)      # String.fromCharCode(13); 
+    #aLfCr = aLF + aCR 
+    #aCrLf = aCR + aLF 
+    #aColonSpaceDblQuote = aColon + aSpace + aDblQuote
+    #example = "example" 
+    #'''
+    #'''
     screenWidthAvail = self.width()
     screenHeightAvail = self.height()
     
-    var screenWidthAvail = screen.availWidth ;  # in JS
-    var screenHeightAvail = screen.availHeight ; 
-    '''  
+    # in JS
+    #var screenWidthAvail = screen.availWidth ;  
+    #var screenHeightAvail = screen.availHeight ; 
+    #'''  
     stringPiecesDict = ({"aSpace": str(32), "aDblQuote": str(34)},
             {"aSnglQuote": str(39), "aComma": str(44)},
             {"aColon": str(58), "aSemiColon": str(59)},
@@ -63,8 +68,8 @@ def genStrVariables():   # stringPiecesDict
             )
     return stringPiecesDict
 
-    # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of genStrVariables()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
-    # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of genStrVariables()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+# jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj    the start of sr    jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # receive an input integer from keyboard
@@ -240,22 +245,22 @@ def genCmdArraySample( cmdArrayWidth, cmdArrayHeight ):
 
     if (cmdArrayHeight < 1):
       h = 99; cmdArrayHeight = h
-    '''  
-    w = 5
-    h = 99
-    cmdArrayWidth = w
-    cmdArrayHeight = h 
-    '''
+    #'''  
+    #w = 5
+    #h = 99
+    #cmdArrayWidth = w
+    #cmdArrayHeight = h 
+    #'''
     cmdArray = {( w, h): " " for w in range(cmdArrayWidth) for h in range(cmdArrayHeight)}
     cmdArrLineNum = 0
 
-    '''
-    w = 5
-    h = 60
-    width = w
-    height = h
-    cmdArray = {(w, h): " " for w in range(width) for h in range(height)}
-    '''
+    #'''
+    #w = 5
+    #h = 60
+    #width = w
+    #height = h
+    #cmdArray = {(w, h): " " for w in range(width) for h in range(height)}
+    #'''
 
     # y is record number
     # x is item in record
@@ -1300,19 +1305,19 @@ def menuInit(cmdArray):
         tempHold = menuLineItems["6"]; tempHold = tempHold[0]; print( tempHold );
         line_choice = inputIntegerOnly("Which number do you want? ")
         # line_choice = int(line_choice)  
-        ''' 
-        def inputIntegerOnly( promptString ): 
-            while True:
-                inputted = input( promptString )
-                if inputted == "stop":
-                print( "Stop chosen. ") 
-                break
-            elif not inputted.isdigit():
-                print( "Must be a number! ")
-            else: 
-                inputted = int(inputted)
-                return inputted
-        ''' 
+        #''' 
+        #def inputIntegerOnly( promptString ): 
+        #    while True:
+        #        inputted = input( promptString )
+        #        if inputted == "stop":
+        #        print( "Stop chosen. ") 
+        #        break
+        #    elif not inputted.isdigit():
+        #        print( "Must be a number! ")
+        #    else: 
+        #        inputted = int(inputted)
+        #        return inputted
+        #''' 
  
         if line_choice <= 0:
             out_bytes = "Return to previous menu is chosen. sys.exit() "
@@ -1402,15 +1407,17 @@ def menuInit(cmdArray):
     ## if __name__ == "__main__":
     ## sys.exit(main())
 
+
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of main   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 def main(argv=None):
     if argv is None:
         argv = sys.argv
+        lenArgv = len(sys.argv)
 
     print(" ")
     print("# jcj-jcj-jcj- START OF PROGRAM - jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj")
     thisProgramIs = "reAppAnEmptyUbu.py"
-    print(("Start of program " + thisProgramIs))
+    print(("Start of program in Main " + thisProgramIs))
     print(" ")
 
     import curses
@@ -1425,10 +1432,12 @@ def main(argv=None):
 
     # import urwid
     import numpy
+    import pygame
+    import tkinter
 
-    '''
-    Trying to install a favorite set of Ubu software.
-    '''
+    #'''
+    #Trying to install a favorite set of Ubu software.
+    #'''
     
     w = 5
     h = 99
@@ -1440,7 +1449,7 @@ def main(argv=None):
 
     # out_bytes.wait() 
     out_bytes = " " 
-    print(("# jcj-jcj-jcj- Function Main is ending with sys.exit(): ", out_bytes))
+    print(("# jcj-jcj-jcj-" + thisProgramIs + " Function Main is ending with sys.exit(): ", out_bytes))
 
     print(" ")
     print("# jcj-jcj-jcj- END OF PROGRAM - jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj")
@@ -1448,4 +1457,5 @@ def main(argv=None):
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of main   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 if __name__ == "__main__":
     sys.exit(main())
+
 
