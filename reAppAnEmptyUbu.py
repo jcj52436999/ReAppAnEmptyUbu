@@ -247,6 +247,7 @@ def genaFile_cmdArrValsDotTxt( cmdArrayWidth, cmdArrayHeight ):  # Gens txt file
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the start of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # Generates as a dev default an array of apt-get command lines
+# to be replaced by mthdGenCmdArraySample.py 
 def genCmdArraySample( cmdArrayWidth, cmdArrayHeight ):
     if (cmdArrayWidth < 1):
       w = 5; cmdArrayWidth = w
