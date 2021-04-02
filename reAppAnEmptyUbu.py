@@ -3,9 +3,11 @@
 
 # '''
 # reAppAnEmptyUbu.py
-# Created originally in 2018
+# Created originally in 2018 as a simplistic exercise in broad-spectrum py use
 # @author Joe Jackson 
 
+
+# reAppAnEmptyUbu.py-2021-04-01-2120-new jc-env now included on newly SSDd Tosh Dropbox dir
 # reAppAnEmptyUbu.py-2021-03-08-1640-just noting a general restart in efforts here
 # reAppAnEmptyUbu.py-2020-03-11-0150-now-github-and-vsc-functional.py
 # reAppAnEmptyUbu.py-2018-03-23-1857-postgres-menus-now-work-rudimen-tosh-and-acer.py
