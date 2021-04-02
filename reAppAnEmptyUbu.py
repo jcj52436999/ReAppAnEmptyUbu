@@ -7,6 +7,12 @@
 # @author Joe Jackson 
 
 
+
+
+# git clone https://username:password@github.com/JBCodeWorld/test.git
+# git push https://jcj52436999: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@github.com/jcj52436999/ReAppAnEmptyUbu.git
+# https://github.com/jcj52436999/ReAppAnEmptyUbu.git 
+# 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
 # reAppAnEmptyUbu.py-2021-04-01-2120-new jc-env now included on newly SSDd Tosh Dropbox dir
 # reAppAnEmptyUbu.py-2021-03-08-1640-just noting a general restart in efforts here
 # reAppAnEmptyUbu.py-2020-03-11-0150-now-github-and-vsc-functional.py
