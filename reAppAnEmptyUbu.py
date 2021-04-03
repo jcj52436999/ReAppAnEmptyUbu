@@ -88,40 +88,39 @@ def genTxtScrn():   # stringPiecesDict
     #var screenHeightAvail = screen.availHeight ; 
     #'''  
 
-import pyautogui
+    import pyautogui
 
-width, height= pyautogui.size()
+    width, height= pyautogui.size()
 
-print(width)
-#1366
+    print(width)
+    #1366
 
-print(height)
-#768
+    print(height)
+    #768
 
-import tkinter as tk
+    import tkinter as tk
 
-root = tk.Tk()
+    root = tk.Tk()
 
-screen_width = root.winfo_screenwidth()
-screen_height = root.winfo_screenheight()
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
 
-print(screen_width)
-print(screen_height)
+    print(screen_width)
+    print(screen_height)
 
-#window_width = root.winfo_windowwidth()
-#window_height = root.winfo_screenheight()
+    #window_width = root.winfo_windowwidth()
+    #window_height = root.winfo_screenheight()
 
-#print(screen_width)
-#print(screen_height)
-
-
-import os
-columns, rows = os.get_terminal_size(0)
-print(columns)
-print(rows)
+    #print(screen_width)
+    #print(screen_height)
 
 
+    import os
+    columns, rows = os.get_terminal_size(0)
+    print(columns)
+    print(rows)
 
+    return screen_width
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of genTxtScrn()   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
@@ -1373,6 +1372,11 @@ def line_by_line_term_interface(cmdArray):
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of menuInit   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 def menuInit(cmdArray):
+
+    import tkinter as tk
+
+    root = tk.Tk()
+
 
     ## DEFAULT menuLineItems 
     menuLineItems = { 
