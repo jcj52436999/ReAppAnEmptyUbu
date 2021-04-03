@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# '''
+# mthdGenStrVariables.py as part of reAppAnEmptyUbu.py
+# Created originally in 2018 as a simplistic exercise in broad-spectrum py use
+# @author Joe Jackson 
 
 
 
