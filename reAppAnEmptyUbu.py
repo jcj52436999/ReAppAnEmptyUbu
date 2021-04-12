@@ -700,7 +700,9 @@ def line_by_line_term_interface(cmdArray):
     return out_bytes
 
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the end of sr   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+###########################################################################################
 
+###########################################################################################
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of menuInit   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 def menuInit(cmdArray):
 
@@ -708,18 +710,25 @@ def menuInit(cmdArray):
     import tkinter as tk
 
     root = tk.Tk()
+    
+    w = tk.Label(root, text="Hello Tkinter! This is a sample only.")
+    w.pack()
+
+    root.mainloop()
 
 ################################################
 
 
-    import pygame
+    ######  temp block pygame allowing test of rest of file
+    #import pygame
     background_colour = (255,255,255)
     (width, height) = (300, 200)
-    screen = pygame.display.set_mode((width, height))
-    pygame.display.set_caption('Pygame Try 1')
-    screen.fill(background_colour)
-    pygame.display.flip()
+    #screen = pygame.display.set_mode((width, height))
+    #pygame.display.set_caption('Pygame Try 1')
+    #screen.fill(background_colour)
+    #pygame.display.flip()
     #running = True
+    
     #while running:
     #  for event in pygame.event.get():
     #    if event.type == pygame.QUIT:
@@ -890,7 +899,7 @@ def main(argv=None):
 
     # import urwid
     import numpy
-    import pygame
+    #import pygame
     import tkinter
 
     #'''
