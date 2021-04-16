@@ -47,6 +47,7 @@ menubar.add_cascade(label="Edit", menu=editmenu)
 helpmenu = Menu(menubar, tearoff=0)
 helpmenu.add_command(label="Help Index", command=donothing)
 helpmenu.add_command(label="About...", command=donothing)
+
 menubar.add_cascade(label="Help", menu=helpmenu)
 
 
