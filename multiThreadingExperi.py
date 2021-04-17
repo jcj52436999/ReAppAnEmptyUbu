@@ -33,10 +33,10 @@ if __name__ == "__main__":
      t1.start()
      t2.start()
      # starting threads here parallel by using start function.
-     t1.join()
+     # t1.join()
      # this join() will wait until the cal_square() function is finished.
-     t2.join()
+     # t2.join()
      # this join() will wait unit the cal_cube() function is finished.
-     print("Successes!")
+     print("Started two processes, squares and cubes!")
 
 
