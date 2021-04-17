@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# '''
+# eTutorials-menus.py
+# Created originally in 2021 as a simplistic exercise in broad-spectrum py use
+# @author Joe Jackson 
+
+
 import tkinter
 
 root = tkinter.Tk(  )
