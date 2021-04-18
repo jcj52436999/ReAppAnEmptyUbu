@@ -4,7 +4,7 @@
 # '''
 # multiThreadingExperi.py
 # Created originally in 2021 as a simplistic exercise in broad-spectrum py use
-# @author Joe Jackson 
+# copied from web and modified for study @author Joe Jackson 
 
 
 import time

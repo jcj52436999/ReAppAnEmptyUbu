@@ -1,3 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# '''
+# tkinter-menuS-try01.py
+# Created originally in 2021 as a simplistic exercise in broad-spectrum py use
+# copied from web and modified for study @author Joe Jackson 
+
+
+
 ###############################################
 import tkinter as tk
 from tkinter import Menu

@@ -3,8 +3,9 @@
 
 # '''
 # turtle-three-state.py
-# Created originally in 2021 as a simplistic exercise in broad-spectrum py use
-# @author Joe Jackson 
+# Created originally by Open Book Project as an example of event driven code
+# @author unknown 
+# copied by JC Jackson for study
 
 
 
