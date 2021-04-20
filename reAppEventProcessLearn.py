@@ -460,6 +460,7 @@ def menuInit(cmdArray):
     ## sys.exit(main())
 
 
+
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the Start of main   jcj-jcjjcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
 def main(argv=None):
     import sys
@@ -469,9 +470,12 @@ def main(argv=None):
 
     print(" ")
     print("# jcj-jcj-jcj- START OF PROGRAM - jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj")
-    thisProgramIs = "reAppEventProcessLearn.py"
+    thisProgramIs= argv[0]        # "reAppEventProcessLearn.py"
     print(("Start of program in Main " + thisProgramIs))
-    print(" ")
+    print(" ") 
+    print("Startup arguments, args, are ", argv ) 
+    print("Args length in number of characters is ", lenArgv ) 
+    print(" ") 
 
     # import sys 
     import curses
@@ -537,39 +541,16 @@ def main(argv=None):
     
     
 # jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj   the End of main   jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj-jcj
+
+
 if __name__ == "__main__":
     print(" ")
-    print(" YES, we really are at the bottom of the progam, STARTING MAIN FUNCTION! ")
+    print(" YES, we really are at the bottom of the progam, CALLING MAIN FUNCTION! ")
     print(" ")
+    
     main()
     # sys.exit(main())
+    
     sys.exit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
