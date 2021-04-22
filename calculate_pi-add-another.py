@@ -20,11 +20,13 @@ Website: www.zetcode.com
 Copied for study by JC Jackson, 2021-04-21
 """
 
+import tkinter as tk
 from tkinter import (Tk, BOTH, Text, E, W, S, N, END, 
     NORMAL, DISABLED, StringVar)
 from tkinter.ttk import Frame, Label, Button, Progressbar, Entry
 from tkinter import scrolledtext
 
+import multiprocessing
 from multiprocessing import Queue, Process
 import queue 
 from decimal import Decimal, getcontext
@@ -40,10 +42,15 @@ class Example(Frame):
         self.queue = q 
         self.parent = parent
         self.initUI()
-        
-        
+
+    def callback(self):
+        self.root.quit()
+
     def initUI(self):
       
+        # self.root = tk.Tk()
+        # self.root.protocol("WM_DELETE_WINDOW", self.callback)
+
         self.parent.title("Pi Computation")
         self.pack(fill=BOTH, expand=True)
         
@@ -75,6 +82,8 @@ class Example(Frame):
         self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5,
             columnspan=5, sticky=E+W+S+N)
        
+        # self.root.mainloop() 
+        
         
     def onStart(self):
         
@@ -136,10 +145,16 @@ class ExampleAlso(Frame):
         self.queue = q 
         self.parent = parent
         self.initUI()
-        
-        
+
+    def callback(self):
+        self.root.quit()
+
+                
     def initUI(self):
       
+        # self.root = tk.Tk()
+        # self.root.protocol("WM_DELETE_WINDOW", self.callback)
+
         self.parent.title("Pi Computation Also")
         self.pack(fill=BOTH, expand=True)
         
@@ -170,6 +185,8 @@ class ExampleAlso(Frame):
         self.txt = scrolledtext.ScrolledText(self)  
         self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5,
             columnspan=5, sticky=E+W+S+N)
+
+        # self.root.mainloop()
        
         
     def onStart(self):
@@ -226,19 +243,55 @@ class ExampleAlso(Frame):
 def main():
     
     q = Queue()
+    # queue = multiprocessing.Queue() 
+    # args = (queue, queue)
   
     rootA = Tk()
     rootAlso = Tk()
     rootA.geometry("400x350+300+300")
     rootAlso.geometry("430x380+800+400")
-    app = Example(rootA, q) 
+
+    noJoy='''
+    processes = (
+        multiprocessing.Process(
+            target=Example,
+            name='Example',
+            args=(rootA, args[0])
+        ),
+        multiprocessing.Process(
+            target=ExampleAlso,
+            name='ExampleAlso',
+            args=(rootAlso, args[1])
+        )
+    )
+
+    for process in processes:
+        process.start()
+    '''
+
+    # p1 = multiprocessing.Process(target = calc_square,args=(arr,))
+    appA = Example(rootA, q) 
+
+    # appA = multiprocessing.Process(target = Example,args=(rootA, q))
+
+
     appAlso = ExampleAlso(rootAlso, q) 
+
+    # appAlso = multiprocessing.Process(target = ExampleAlso,args=(rootAlso, q))
     
-    rootA.mainloop()  
+    # self.mainloop()
+    # rootA.mainloop()  
+    # tk.mainloop()
     
-    # mainloop()
-    rootAlso.destroy
-    rootA.destroy
+    # appA.start()
+    # appAlso.start() 
+
+    tk.mainloop()
+    
+    # mainloop() 
+    
+    #rootAlso.destroy
+    #rootA.destroy
 
 
 if __name__ == '__main__':
