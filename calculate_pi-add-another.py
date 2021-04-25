@@ -7,7 +7,7 @@
 # copied from web and modified for study @author Joe Jackson 
 
 
-jnq = """
+aComment="""
 ZetCode Tkinter e-book
 
 This script produces a long-running task of calculating 
@@ -251,7 +251,7 @@ def main():
     rootA.geometry("400x350+300+300")
     rootAlso.geometry("430x380+800+400")
 
-    noJoy='''
+    aComment='''
     processes = (
         multiprocessing.Process(
             target=Example,
