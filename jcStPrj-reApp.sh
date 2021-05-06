@@ -123,21 +123,6 @@ function splashUp {
 
 
 fframeDimUnits="chars"
-sscreenDimUnits="pixels"
-wworkDir="" 
-wwindSzXFRAC=30
-wwindSzYFRAC=30
-wwindPosXFRAC=10
-wwindPosYFRAC=10
-# aappToSplash="konsole" 
-aappToSplash="gnome-terminal" 
-splashUp $wwindSzXFRAC $wwindPosYFRAC $wwindPosXFRAC $wwindPosYFRAC $aappToSplash $wworkDir $fframeDimUnits 
-# $sscreenDimUnits
-sleep 5s
-echo "Just ran the first exoScript."
-
-
-fframeDimUnits="chars"
 sscreenDimUnits="chars"
 wworkDir="" 
 wwindSzXFRAC=20
@@ -190,9 +175,9 @@ fframeDimUnits="chars"
 sscreenDimUnits="pixels"
 wworkDir="" 
 wwindSzXFRAC=60
-wwindSzYFRAC=10
+wwindSzYFRAC=60
 wwindPosXFRAC=20
-wwindPosYFRAC=40
+wwindPosYFRAC=20
 # aappToSplash="konsole" 
 aappToSplash="kdevelop" 
 splashUp $wwindSzXFRAC $wwindPosYFRAC $wwindPosXFRAC $wwindPosYFRAC $aappToSplash $wworkDir $fframeDimUnits 
@@ -231,7 +216,24 @@ wwindPosYFRAC=40
 aappToSplash="konsole" 
 splashUp $wwindSzXFRAC $wwindPosYFRAC $wwindPosXFRAC $wwindPosYFRAC $aappToSplash $wworkDir $fframeDimUnits 
 # $sscreenDimUnits
-sleep 5s
+sleep 10s
+echo "Just ran a Konsole exoScript."
+
+
+# nohup konsole --workdir ~/Dropbox/WkspcPythonSTANDALONES/ReAppAnEmptyUbu --command "source jc-env/bin/activate" --geometry 1500x400 &
+#nohup konsole --workdir ~/Dropbox/WkspcPythonSTANDALONES/ReAppAnEmptyUbu --command "source jc-env/bin/activate" --geometry 1500x400 &
+fframeDimUnits="pixels"
+sscreenDimUnits="pixels"
+wworkDir="~" 
+wwindSzXFRAC=70
+wwindSzYFRAC=55
+wwindPosXFRAC=80
+wwindPosYFRAC=10
+# aappToSplash="konsole" 
+aappToSplash="konsole" 
+splashUp $wwindSzXFRAC $wwindPosYFRAC $wwindPosXFRAC $wwindPosYFRAC $aappToSplash $wworkDir $fframeDimUnits 
+# $sscreenDimUnits
+# sleep 5s
 echo "Just ran a Konsole exoScript."
 
 
