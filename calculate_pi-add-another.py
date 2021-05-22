@@ -33,6 +33,8 @@ from multiprocessing import Queue, Process
 import queue 
 from decimal import Decimal, getcontext
 
+import time
+
 DELAY1 = 80
 DELAY2 = 20
 
@@ -447,9 +449,14 @@ class TextFrameTry02(Frame):
                 (Decimal(2)/(8*k+4)) - (Decimal(1)/(8*k+5))- \
                 (Decimal(1)/(8*k+6)))
             k += 1
-            print ("TextFrameTry01 is still alive = ", self.p1.is_alive())
+            print ("TextFrameTry02 is still alive = ", self.p1.is_alive())
+            queue.put("TextFrameTry02 is still alive = ", self.p1.is_alive()) 
+            queue.put(" ") 
+            time.sleep(0.10) 
+
             
-        queue.put(pi)    
+        queue.put(pi) 
+        queue.put(" ") 
         print( self.parent.title(), " frame end")    
 #########################################################
 
