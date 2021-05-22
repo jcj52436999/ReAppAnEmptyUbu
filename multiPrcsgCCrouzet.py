@@ -10,6 +10,9 @@
 import logging
 import multiprocessing
 
+# import multiprocessing
+print("Number of cpu : ", multiprocessing.cpu_count()) 
+
 
 _LOGGER = multiprocessing.log_to_stderr()
 _LOGGER.setLevel(logging.DEBUG)
