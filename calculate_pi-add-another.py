@@ -429,7 +429,7 @@ class TextFrameTry02(Frame):
             try:
                 self.txt.insert('end', self.queue.get(0))
                 self.txt.insert('end', "\n")
-                self.pbar.stop()
+                self.pbar.stop() 
                 self.startBtn.config(state=NORMAL)
             
             except queue.Empty:
@@ -444,17 +444,38 @@ class TextFrameTry02(Frame):
         k = 0
         n = self.accuracy
         
+        self.txt.delete('1.0', 'end') # clear the outputtext text widget. 1.0 and         
+        # self.txt.delete("1.0", "end-1c")
+        
+        # self.txt.delete(1.0,tk.END) # clear the outputtext text widget. 1.0 and tk.END are neccessary. tk implies the tkinter module. If you just want to add text dont incude that line
+        ##### self.text.put("---------------") 
+        self.txt.insert('end',"---------------")  
+
         while k < n:
             pi += (Decimal(1)/(16**k))*((Decimal(4)/(8*k+1)) - \
                 (Decimal(2)/(8*k+4)) - (Decimal(1)/(8*k+5))- \
                 (Decimal(1)/(8*k+6)))
-            k += 1
-            print ("TextFrameTry02 is still alive = ", self.p1.is_alive())
-            queue.put("TextFrameTry02 is still alive = ", self.p1.is_alive()) 
-            queue.put(" ") 
-            time.sleep(0.10) 
-
+            k += 1 
             
+            # myvar = "the answer is {}".format(answer) 
+            # myvar = "the answer is " + str(answer) 
+            insertToTxtfr = ("TextFrameTry02 is still alive = " + str(self.p1.is_alive()))   
+            
+            # insertToTxtfr = ('TextFrameTry02 is still alive = {}'.format(self.p1.is_alive())   
+            # insertToTxtfr = ('TextFrameTry02 is still alive = XXX')   
+                        
+            print(insertToTxtfr, " ") 
+            # queue.put("TextFrameTry02 is still alive = ", self.p1.is_alive()) 
+            # queue.put(" ") 
+            
+            # outputtext.insert(tk.END,entryvar) # insert the entry widget contents in the text widget. tk.END is necessary.
+            self.txt.insert('end',insertToTxtfr) # insert the entry widget contents in the text widget. tk.END is necessary.
+
+            time.sleep(0.05) 
+            
+        
+        queue.put(" ") 
+        print( pi ) 
         queue.put(pi) 
         queue.put(" ") 
         print( self.parent.title(), " frame end")    
