@@ -23,7 +23,7 @@ Copied for study by JC Jackson, 2021-04-21
 """
 
 import tkinter as tk
-from tkinter import (Tk, BOTH, Text, E, W, S, N, END, 
+from tkinter import (Tk, BOTH, Text, E, W, S, N, END, INSERT, 
     NORMAL, DISABLED, StringVar)
 from tkinter.ttk import Frame, Label, Button, Progressbar, Entry
 from tkinter import scrolledtext
@@ -34,6 +34,8 @@ import queue
 from decimal import Decimal, getcontext
 
 import time
+
+# import XInitThreads
 
 DELAY1 = 80
 DELAY2 = 20
@@ -359,6 +361,10 @@ class TextFrameTry02(Frame):
          
         self.queue = q 
         self.parent = parent
+        
+        # Status XInitThreads(void) 
+        # XInitThreads(void)
+        
         self.initUI()
 
     def callback(self):
@@ -368,9 +374,10 @@ class TextFrameTry02(Frame):
     def initUI(self):
       
         # self.root = tk.Tk()
+        # self.root = Tk()
         # self.root.protocol("WM_DELETE_WINDOW", self.callback)
 
-        self.parent.title("TextFrameTry01 init title only")
+        self.parent.title("TextFrameTry02 init title only")
         self.pack(fill=BOTH, expand=True)
         
         self.grid_columnconfigure(4, weight=1)
@@ -398,9 +405,40 @@ class TextFrameTry02(Frame):
         self.pbar.grid(row=1, column=1, columnspan=3, sticky=W+E)     
         
         self.txt = scrolledtext.ScrolledText(self)  
-        self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5,
-            columnspan=5, sticky=E+W+S+N)
+        self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5,columnspan=5, sticky=E+W+S+N)
+        
+        aComment=''' 
+        # Creating scrolled text 
+        # area widget
+        text_area = scrolledtext.ScrolledText(win, 
+                                              wrap = tk.WORD, 
+                                              width = 40, 
+                                              height = 10, 
+                                              font = ("Times New Roman",
+                                                      15))
+          
+        text_area.grid(column = 0, pady = 10, padx = 10)
+          
+        # Placing cursor in the text area
+        text_area.focus()
+        
+        '''
+                
+        # self.txt = scrolledtext.ScrolledText(self.root, wrap = tk.WORD, width = 40, height = 10, font = ("Times New Roman", 15), grid=(row=2, column=0, rowspan=4, padx=10, pady=5, columnspan=5, sticky=E+W+S+N))
+    
+        # self.txt = scrolledtext.ScrolledText(width = 40, height = 10, font = ("Times New Roman", 15), grid.row(2), grid.column(0), grid.rowspan(4), grid.padx(10), grid.pady(5), grid.columnspan(5), grid.sticky(E+W+S+N), wrap(tk.WORD))
 
+        # self.txt = scrolledtext.ScrolledText(self)  
+        
+        # self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5, columnspan=5, sticky=E+W+S+N)
+
+        # text_area = scrolledtext.ScrolledText(win, 
+                                      #wrap = tk.WORD, 
+                                      #width = 40, 
+                                      #height = 10, 
+                                      #font = ("Times New Roman",
+                                            #15))
+  
         # self.root.mainloop()
        
         
@@ -447,6 +485,8 @@ class TextFrameTry02(Frame):
         self.txt.delete('1.0', 'end') # clear the outputtext text widget. 1.0 and         
         # self.txt.delete("1.0", "end-1c")
         
+        #self.txt.focus() 
+        
         # self.txt.delete(1.0,tk.END) # clear the outputtext text widget. 1.0 and tk.END are neccessary. tk implies the tkinter module. If you just want to add text dont incude that line
         ##### self.text.put("---------------") 
         self.txt.insert('end',"---------------")  
@@ -470,15 +510,20 @@ class TextFrameTry02(Frame):
             
             # outputtext.insert(tk.END,entryvar) # insert the entry widget contents in the text widget. tk.END is necessary.
             self.txt.insert('end',insertToTxtfr) # insert the entry widget contents in the text widget. tk.END is necessary.
-
+            ##### self.txt.update_idletasks() 
+            # XInitThreads
+            self.txt.pack
+            
             time.sleep(0.05) 
             
+        #### self.txt.update_idletasks() 
         
-        queue.put(" ") 
         print( pi ) 
-        queue.put(pi) 
-        queue.put(" ") 
         print( self.parent.title(), " frame end")    
+
+        # queue.put(" ") 
+        queue.put(pi) 
+        # queue.put(" ") 
 #########################################################
 
 
@@ -546,7 +591,19 @@ def main():
     appTextFrameTry02 = TextFrameTry02(rootTextFrameTry02, q) 
     appTextFrameTry02.parent.title("appTextFrameTry02 title try") 
     appTextFrameTry02.parent.geometry("400x350+800+350") 
-
+    
+    aComment='''
+    root = Tk()
+    text = Text(root)
+    text.insert(INSERT, "Hello.....")
+    text.insert(END, "Bye Bye.....")
+    text.pack() 
+    '''
+    unRoot = Tk() 
+    textTTT = Text(unRoot) 
+    textTTT.insert(INSERT, "Hello......") 
+    textTTT.insert(END, "Bye Bye......") 
+    textTTT.pack() 
 
     # appAlso = multiprocessing.Process(target = ExampleAlso,args=(rootAlso, q))
     
