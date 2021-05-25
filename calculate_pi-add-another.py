@@ -26,7 +26,9 @@ import tkinter as tk
 from tkinter import (Tk, BOTH, Text, E, W, S, N, END, INSERT, 
     NORMAL, DISABLED, StringVar)
 from tkinter.ttk import Frame, Label, Button, Progressbar, Entry
-from tkinter import scrolledtext
+from tkinter import scrolledtext as st
+
+win = tk.Tk() 
 
 import multiprocessing
 from multiprocessing import Queue, Process
@@ -34,6 +36,8 @@ import queue
 from decimal import Decimal, getcontext
 
 import time
+
+# import keyboard 
 
 # import XInitThreads
 
@@ -85,7 +89,7 @@ class Example(Frame):
         self.pbar = Progressbar(self, mode='indeterminate')        
         self.pbar.grid(row=1, column=1, columnspan=3, sticky=W+E)     
         
-        self.txt = scrolledtext.ScrolledText(self)  
+        self.txt = st.ScrolledText(self)  
         self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5,
             columnspan=5, sticky=E+W+S+N)
        
@@ -190,7 +194,7 @@ class ExampleAlso(Frame):
         self.pbar = Progressbar(self, mode='indeterminate')        
         self.pbar.grid(row=1, column=1, columnspan=3, sticky=W+E)     
         
-        self.txt = scrolledtext.ScrolledText(self)  
+        self.txt = st.ScrolledText(self)  
         self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5,
             columnspan=5, sticky=E+W+S+N)
 
@@ -294,7 +298,7 @@ class TextFrameTry01(Frame):
         self.pbar = Progressbar(self, mode='indeterminate')        
         self.pbar.grid(row=1, column=1, columnspan=3, sticky=W+E)     
         
-        self.txt = scrolledtext.ScrolledText(self)  
+        self.txt = st.ScrolledText(self)  
         self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5,
             columnspan=5, sticky=E+W+S+N)
 
@@ -378,6 +382,7 @@ class TextFrameTry02(Frame):
         # self.root.protocol("WM_DELETE_WINDOW", self.callback)
 
         self.parent.title("TextFrameTry02 init title only")
+        #self.title("TextFrameTry02 init title only")
         self.pack(fill=BOTH, expand=True)
         
         self.grid_columnconfigure(4, weight=1)
@@ -404,13 +409,25 @@ class TextFrameTry02(Frame):
         self.pbar = Progressbar(self, mode='indeterminate')        
         self.pbar.grid(row=1, column=1, columnspan=3, sticky=W+E)     
         
-        self.txt = scrolledtext.ScrolledText(self)  
-        self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5,columnspan=5, sticky=E+W+S+N)
+        # self.txt = st.ScrolledText(win)  
+        self.txt = st.ScrolledText(self)  
+        self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5,columnspan=5, sticky=E+W+S+N) 
+
+        self.txt.insert(INSERT, "\nJust set up this txt.\n") 
+        self.txt.insert(INSERT, "Just set up this txt.\n") 
+        self.txt.insert(INSERT, "Just set up this txt.\n") 
+        self.txt.insert(INSERT, "Just set up this txt.\n") 
+        self.txt.insert(INSERT, "Just set up this txt.\n\n") 
+        # aKeyStrk = keyboard.read_key()
+        # aKeyStrk = input() 
         
         aComment=''' 
+        st.insert(tkinter.INSERT, 'Following Ports are open\n' )
+        st.insert(tkinter.INSERT, str(portlist)) 
+        
         # Creating scrolled text 
         # area widget
-        text_area = scrolledtext.ScrolledText(win, 
+        text_area = st.ScrolledText(win, 
                                               wrap = tk.WORD, 
                                               width = 40, 
                                               height = 10, 
@@ -424,15 +441,15 @@ class TextFrameTry02(Frame):
         
         '''
                 
-        # self.txt = scrolledtext.ScrolledText(self.root, wrap = tk.WORD, width = 40, height = 10, font = ("Times New Roman", 15), grid=(row=2, column=0, rowspan=4, padx=10, pady=5, columnspan=5, sticky=E+W+S+N))
+        # self.txt = st.ScrolledText(self.root, wrap = tk.WORD, width = 40, height = 10, font = ("Times New Roman", 15), grid=(row=2, column=0, rowspan=4, padx=10, pady=5, columnspan=5, sticky=E+W+S+N))
     
-        # self.txt = scrolledtext.ScrolledText(width = 40, height = 10, font = ("Times New Roman", 15), grid.row(2), grid.column(0), grid.rowspan(4), grid.padx(10), grid.pady(5), grid.columnspan(5), grid.sticky(E+W+S+N), wrap(tk.WORD))
+        # self.txt = st.ScrolledText(width = 40, height = 10, font = ("Times New Roman", 15), grid.row(2), grid.column(0), grid.rowspan(4), grid.padx(10), grid.pady(5), grid.columnspan(5), grid.sticky(E+W+S+N), wrap(tk.WORD))
 
-        # self.txt = scrolledtext.ScrolledText(self)  
+        # self.txt = st.ScrolledText(self)  
         
         # self.txt.grid(row=2, column=0, rowspan=4, padx=10, pady=5, columnspan=5, sticky=E+W+S+N)
 
-        # text_area = scrolledtext.ScrolledText(win, 
+        # text_area = st.ScrolledText(win, 
                                       #wrap = tk.WORD, 
                                       #width = 40, 
                                       #height = 10, 
@@ -445,13 +462,20 @@ class TextFrameTry02(Frame):
     def onStart(self):
         
         self.startBtn.config(state=DISABLED)
-        self.txt.delete("1.0", END)
+        self.txt.delete("1.0", END) 
+        self.txt.insert(INSERT, "\n\nNow onStart method is running.\n\n") 
+        print("\nNow onStart method is running.\n") 
         
         self.digits = int(self.ent1.get())
         self.accuracy = int(self.ent2.get())
         
+        print("\nonStart, start to process generatePi is next.\n") 
+        self.txt.insert(INSERT, "\n\nonStart, start to process to generatePi is next.\n\n") 
+        # self.p1 = Process(target=self.generatePi)
         self.p1 = Process(target=self.generatePi, args=(self.queue,))
-        self.p1.start()
+        self.p1.start() 
+        print("\nonStart, start to process to generatePi returned.\n")
+        self.txt.insert(INSERT, "\n\nonStart, start to process to generatePi returned.\n\n") 
         self.pbar.start(DELAY2)
         self.after(DELAY1, self.onGetValue)
         
@@ -460,72 +484,104 @@ class TextFrameTry02(Frame):
         
         if (self.p1.is_alive()):
             
+            print("\nonGetValue finds generatePi Process is alive\n")
+            self.txt.insert(INSERT, "\nonGetValue finds generatePi Process is alive\n") 
             self.after(DELAY1, self.onGetValue)
             return
         else:    
         
             try:
-                self.txt.insert('end', self.queue.get(0))
-                self.txt.insert('end', "\n")
+                self.txt.insert(END, self.queue.get(0))
+                self.txt.insert(END, "\n") 
+                self.txt.insert(INSERT, "\n\nNow running onGetValue else section.\n\n") 
+                print("\nNow running onGetValue else section.\n") 
+
                 self.pbar.stop() 
                 self.startBtn.config(state=NORMAL)
             
             except queue.Empty:
-                print("queue is empty")
-            
+                print("\nqueue is empty\n") 
+                self.txt.insert("\nqueue is empty\n")         
+
             
     def generatePi(self, queue):
+    # def generatePi(self):
         
         getcontext().prec = self.digits
         
         pi = Decimal(0)
+        # pi=999
         k = 0
         n = self.accuracy
         
-        self.txt.delete('1.0', 'end') # clear the outputtext text widget. 1.0 and         
+        # self.txt.delete('1.0', END) 
+        # clear the outputtext text widget. 1.0 and         
         # self.txt.delete("1.0", "end-1c")
         
         #self.txt.focus() 
         
         # self.txt.delete(1.0,tk.END) # clear the outputtext text widget. 1.0 and tk.END are neccessary. tk implies the tkinter module. If you just want to add text dont incude that line
+        print("\nNow running generatePi section.\n") 
         ##### self.text.put("---------------") 
-        self.txt.insert('end',"---------------")  
+        self.txt.insert(INSERT,"\n\n---------------\n\n")   
+        self.txt.insert(INSERT, "\n\nNow running generatePi section.\n\n") 
 
+
+        # aComment='''
         while k < n:
             pi += (Decimal(1)/(16**k))*((Decimal(4)/(8*k+1)) - \
                 (Decimal(2)/(8*k+4)) - (Decimal(1)/(8*k+5))- \
                 (Decimal(1)/(8*k+6)))
             k += 1 
             
+            # self.txt.insert(INSERT, 'Following Ports are open\n' )
+            #st.insert(tkinter.INSERT, 'Following Ports are open\n' )
+            #st.insert(tkinter.INSERT, str(portlist))
             # myvar = "the answer is {}".format(answer) 
             # myvar = "the answer is " + str(answer) 
-            insertToTxtfr = ("TextFrameTry02 is still alive = " + str(self.p1.is_alive()))   
+            insertToTxtfr = ("\nTextFrameTry02 is still alive = " + str(self.p1.is_alive())+"\n\n")   
             
             # insertToTxtfr = ('TextFrameTry02 is still alive = {}'.format(self.p1.is_alive())   
             # insertToTxtfr = ('TextFrameTry02 is still alive = XXX')   
                         
-            print(insertToTxtfr, " ") 
+            print(insertToTxtfr) 
             # queue.put("TextFrameTry02 is still alive = ", self.p1.is_alive()) 
             # queue.put(" ") 
             
             # outputtext.insert(tk.END,entryvar) # insert the entry widget contents in the text widget. tk.END is necessary.
-            self.txt.insert('end',insertToTxtfr) # insert the entry widget contents in the text widget. tk.END is necessary.
+            self.txt.insert(INSERT, insertToTxtfr) # insert the entry widget contents in the text widget. tk.END is necessary.
             ##### self.txt.update_idletasks() 
             # XInitThreads
-            self.txt.pack
+            # self.txt.pack
             
             time.sleep(0.05) 
+            # '''
+            
+        
             
         #### self.txt.update_idletasks() 
+        # self.txt.pack
         
+        print("\nNow running print out pi section.\n") 
+        self.txt.insert(INSERT, "\n\nNow running print out pi section.\n\n") 
         print( pi ) 
         print( self.parent.title(), " frame end")    
 
-        # queue.put(" ") 
-        queue.put(pi) 
-        # queue.put(" ") 
-#########################################################
+        self.txt.insert(INSERT, "\n\nNow running INSERT out pi section.\n\n") 
+        self.txt.insert(INSERT, pi )  
+        self.txt.insert(INSERT, "\n\nDone INSERTING and printing out pi.\n\n") 
+        print("\nDone INSERTING and printing out pi.\n") 
 
+        # queue.put(" ") 
+        queue.put("Putting Pi from generatePi function.\n")
+        queue.put(pi) 
+        queue.put("Done putting Pi from generatePi function.\n")
+        # queue.put(" ") 
+        # self.txt.pack
+        print("Returning from generatePi.") 
+        return pi
+    
+#############################################################
 
 def main():
     
@@ -585,10 +641,12 @@ def main():
     appTextFrameTry01.parent.geometry("400x350+700+300") 
 
 
-    rootTextFrameTry02 = Tk()
+    rootTextFrameTry02 = tk.Tk()
     ##### rootTextFrameTry01.parent.title('root title try') 
     # rootTextFrameTry01.geometry("400x350+700+300") 
+    # appTextFrameTry02 = TextFrameTry02(textTextFrameTry02, q) 
     appTextFrameTry02 = TextFrameTry02(rootTextFrameTry02, q) 
+    # appTextFrameTry02.parent.title("appTextFrameTry02 title try") 
     appTextFrameTry02.parent.title("appTextFrameTry02 title try") 
     appTextFrameTry02.parent.geometry("400x350+800+350") 
     
