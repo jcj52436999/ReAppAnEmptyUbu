@@ -41,7 +41,7 @@ import time
 
 # import XInitThreads
 
-DELAY1 = 80
+DELAY1 = 10
 DELAY2 = 20
 
 # KEEPER KEEPER KEEPER KEEPER KEEPER
@@ -104,7 +104,8 @@ class Example(Frame):
         self.digits = int(self.ent1.get())
         self.accuracy = int(self.ent2.get())
         
-        self.p1 = Process(target=self.generatePi, args=(self.queue,))
+        self.p1 = Process(target=self.generatePi, args=(self.queue, ))
+    #   self.p1 = Process(target=self.generatePi, args=(self.queue ))
         self.p1.start()
         self.pbar.start(DELAY2)
         self.after(DELAY1, self.onGetValue)
@@ -363,7 +364,7 @@ class TextFrameTry02(Frame):
     def __init__(self, parent, q):
         Frame.__init__(self, parent)   
          
-        self.queue = q 
+        # self.queue = q 
         self.parent = parent
         
         # Status XInitThreads(void) 
@@ -464,49 +465,80 @@ class TextFrameTry02(Frame):
         self.startBtn.config(state=DISABLED)
         self.txt.delete("1.0", END) 
         self.txt.insert(INSERT, "\n\nNow onStart method is running.\n\n") 
-        print("\nNow onStart method is running.\n") 
+        print(self.onStart, "\nNow onStart method is running.\n") 
         
         self.digits = int(self.ent1.get())
         self.accuracy = int(self.ent2.get())
         
         print("\nonStart, start to process generatePi is next.\n") 
         self.txt.insert(INSERT, "\n\nonStart, start to process to generatePi is next.\n\n") 
+
+
+        self.parent_conn, self.child_conn = multiprocessing.Pipe()
+        
+        # creating new processes
+        # p1 = multiprocessing.Process(target=sender, args=(parent_conn,msgs))
+        # p2 = multiprocessing.Process(target=receiver, args=(child_conn,))
+
+        msgs = ""
+        
         # self.p1 = Process(target=self.generatePi)
-        self.p1 = Process(target=self.generatePi, args=(self.queue,))
+        # self.p1 = Process(target=self.generatePi, args=(self.queue, ))
+        self.p1 = Process(target=self.generatePi, args=(self.parent_conn, msgs ))
         self.p1.start() 
-        print("\nonStart, start to process to generatePi returned.\n")
-        self.txt.insert(INSERT, "\n\nonStart, start to process to generatePi returned.\n\n") 
+        
+        
+        print("\nonStart, start to parallel process to generatePi started.\n")
+        self.txt.insert(INSERT, "\n\nonStart, start to parallel process to generatePi started.\n\n") 
         self.pbar.start(DELAY2)
-        self.after(DELAY1, self.onGetValue)
+        self.after(DELAY1, self.onGetValue(self.child_conn, msgs))
         
        
-    def onGetValue(self):
+    def onGetValue(self, conn, msgs):
         
-        if (self.p1.is_alive()):
-            
-            print("\nonGetValue finds generatePi Process is alive\n")
-            self.txt.insert(INSERT, "\nonGetValue finds generatePi Process is alive\n") 
-            self.after(DELAY1, self.onGetValue)
-            return
-        else:    
-        
-            try:
-                self.txt.insert(END, self.queue.get(0))
-                self.txt.insert(END, "\n") 
-                self.txt.insert(INSERT, "\n\nNow running onGetValue else section.\n\n") 
-                print("\nNow running onGetValue else section.\n") 
+        # if (self.p1.is_alive()):
 
-                self.pbar.stop() 
-                self.startBtn.config(state=NORMAL)
-            
-            except queue.Empty:
-                print("\nqueue is empty\n") 
-                self.txt.insert("\nqueue is empty\n")         
+          while self.p1.is_alive():    
+              print("\nonGetValue finds ------------------------- generatePi Process is alive")
+              self.txt.insert(INSERT, "\nonGetValue finds ---------------------- generatePi Process is alive\n") 
+              # self.after(DELAY1, self.onGetValue(conn, msgs))   # self.onGetValue)
+              # return 
+              # msg = conn.recv() 
+              # self.txt.insert( msg ) 
+              time.sleep(0.1) 
+              
+
+        # else:    
+
+          # while 1:
+          #     msg = conn.recv()
+          #     if msg == "END":
+          #         break
+          #     print("Received the message: {}".format(msg))
+        
+            # try: 
+          msg = "msg"
+          msg = conn.recv() 
+          print("This should be a pi: ", msg) 
+          self.txt.insert(END, "\nThis should be a pi: ")               # self.queue.get(0))
+          self.txt.insert(END, msg)               # self.queue.get(0))
+          self.txt.insert(END, "\n") 
+          self.txt.insert(INSERT, "\n\nNow running onGetValue else section.\n\n") 
+          print("\nNow running onGetValue else section.\n") 
+
+          self.pbar.stop() 
+          self.startBtn.config(state=NORMAL)
+          
+            # except conn.Empty:   # queue.Empty:
+                # print("\nqueue is PLACEKEEPER empty\n") 
+                # self.txt.insert("\nqueue is PLACEKEEPER empty\n")         
 
             
-    def generatePi(self, queue):
-    # def generatePi(self):
-        
+    def generatePi(self, conn, msgs):
+    # def generatePi(self, queue):
+    # def generatePi(self):               self.queue, , self.parent_conn, msgs
+    #                  def sender(conn, msgs):
+    
         getcontext().prec = self.digits
         
         pi = Decimal(0)
@@ -539,7 +571,7 @@ class TextFrameTry02(Frame):
             #st.insert(tkinter.INSERT, str(portlist))
             # myvar = "the answer is {}".format(answer) 
             # myvar = "the answer is " + str(answer) 
-            insertToTxtfr = ("\nTextFrameTry02 is still alive = " + str(self.p1.is_alive())+"\n\n")   
+            insertToTxtfr = ("\nTextFrameTry02 is still alive = " + str(self.p1.is_alive())+"")   
             
             # insertToTxtfr = ('TextFrameTry02 is still alive = {}'.format(self.p1.is_alive())   
             # insertToTxtfr = ('TextFrameTry02 is still alive = XXX')   
@@ -549,12 +581,14 @@ class TextFrameTry02(Frame):
             # queue.put(" ") 
             
             # outputtext.insert(tk.END,entryvar) # insert the entry widget contents in the text widget. tk.END is necessary.
-            self.txt.insert(INSERT, insertToTxtfr) # insert the entry widget contents in the text widget. tk.END is necessary.
+            
+            #self.txt.insert(INSERT, insertToTxtfr) # insert the entry widget contents in the text widget. tk.END is necessary.
+            
             ##### self.txt.update_idletasks() 
             # XInitThreads
             # self.txt.pack
-            
-            time.sleep(0.05) 
+            # conn.send( insertToTxtfr )
+            time.sleep(0.01) 
             # '''
             
         
@@ -572,10 +606,12 @@ class TextFrameTry02(Frame):
         self.txt.insert(INSERT, "\n\nDone INSERTING and printing out pi.\n\n") 
         print("\nDone INSERTING and printing out pi.\n") 
 
-        # queue.put(" ") 
-        queue.put("Putting Pi from generatePi function.\n")
-        queue.put(pi) 
-        queue.put("Done putting Pi from generatePi function.\n")
+        conn.send( pi ) 
+        
+        #queue.put(" ") 
+        #queue.put("Putting Pi from generatePi function.\n")
+        #queue.put(pi) 
+        #queue.put("Done putting Pi from generatePi function.\n")
         # queue.put(" ") 
         # self.txt.pack
         print("Returning from generatePi.") 
