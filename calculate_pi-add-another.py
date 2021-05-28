@@ -6,7 +6,8 @@
 # Created originally in 2021 as a simplistic exercise in broad-spectrum py use
 # copied from web and modified for study @author Joe Jackson 
 # choosing to expand this into a multi-window parallel processing app
-
+# missed logging git commit comment here, no biggie, rolling this to a better learning title.
+# Rolling to file learn-tk-mp-pipe-menu-pkg.py
 
 
 aComment="""
