@@ -1612,13 +1612,9 @@ def main():
     xPosThisFrame = 400 ; yPosThisFrame = 300
     xJump = -25 ; yJump = -25
 
-    # def make-A-Frame(rootPiCruncher, xPosThisFrame, yPosThisFrame, dotGeoStr):
-    # app = 
-
-    # PiCruncher 
+    rootPiCruncher = tk.Tk()
     xPosThisFrame+=xJump ; yPosThisFrame+=yJump
     dotGeoStr="400x350"+"+"+str(xPosThisFrame)+"+"+str(yPosThisFrame)
-    rootPiCruncher = tk.Tk()
     ##### rootTextFrameTry01.parent.title('root title try') 
     # rootTextFrameTry01.geometry("400x350+700+300") 
     # appTextFrameTry02 = TextFrameTry02(textTextFrameTry02, q) 
@@ -1646,7 +1642,7 @@ def main():
     ##### rootTextFrameTry01.parent.title('root title try') 
     # rootTextFrameTry01.geometry("400x350+700+300") 
     # appTextFrameTry02 = TextFrameTry02(textTextFrameTry02, q) 
-    appSpeakerDrooled = SpeakerDrooled(rootSpeakerDrooled, q) 
+    appSpeakerDrooled = UnitsConverter(rootSpeakerDrooled, q) 
     # appTextFrameTry02.parent.title("appTextFrameTry02 title try") 
     appSpeakerDrooled.parent.title("SpeakerDrooled title try") 
     appSpeakerDrooled.parent.geometry(dotGeoStr) 
