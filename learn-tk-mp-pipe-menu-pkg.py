@@ -1440,14 +1440,145 @@ class PiCruncher(Frame):
         
         # self.p1 = Process(target=self.generatePi)
         # self.p1 = Process(target=self.generatePi, args=(self.queue, ))
-        self.p1 = Process(target=self.generatePi, args=(self.parent_conn, msgs ))
+        # self.p1 = Process(target=self.generatePi, args=(self.parent_conn, msgs ), callback=self.onCallBack )
+        self.p1 = Process(target=self.generatePi, args=(self.parent_conn, msgs ) ) 
         self.p1.start() 
+        
+        
+        aComment='''
+        
+            from multiprocessing import Pool
+            from time import sleep
+            from random import randint
+            import os
+
+
+        class AsyncFactory:
+            def __init__(self, func, cb_func):
+                self.func = func
+                self.cb_func = cb_func
+                self.pool = Pool()
+
+            def call(self,*args, **kwargs):
+                self.pool.apply_async(self.func, args, kwargs, self.cb_func)
+
+            def wait(self):
+                self.pool.close()
+                self.pool.join()
+
+
+
+        def square(x):
+            sleep_duration = randint(1,5)
+            print "PID: %d \t Value: %d \t Sleep: %d" % (os.getpid(), x ,sleep_duration)
+            sleep(sleep_duration)
+            return x*x
+
+        def cb_func(x):
+            print x
+
+        async_square = AsyncFactory(square, cb_func)
+
+        async_square.call(1)
+        async_square.call(2)
+        async_square.call(3)
+        async_square.call(4)
+        async_square.call(5)
+
+        async_square.wait()        
+        
+        '''
+        
+        aComment='''
+
+        # and another example: ###############################################
+                
+        """Test Callback Function"""
+        import multiprocessing as mp
+
+        def count(countvar):
+            """This function will just count to 100"""
+            print('Incoming Variable is equal to ' + str(countvar))
+            countvar = 0
+            while countvar < 1000000:
+                countvar = countvar + 1
+
+            response = "Count is set to " + str(countvar)
+            return response
+
+        def callback(result):
+            """This will print the result calleded via the callback."""
+
+            if result is not None:
+                print(str(result[0]) + ' Callback Succeeded')
+            else:
+                print("Callback Failure")
+
+        #
+        # Create pool
+        #
+        PROCESSES = 4
+        print('Creating pool with %d processes\n' % PROCESSES)
+        POOL = mp.Pool(PROCESSES)
+        print('POOL = %s' % POOL)
+        print()
+
+        TEST = None
+
+        MP_CALLBACK = None
+        RESULT = None
+        # RESULT = POOL.apply_async(count, (TEST, ), callback=MP_CALLBACK)
+        RESULT = POOL.map_async(count, (TEST, ), callback=callback)
+        POOL.close()
+        POOL.join()
+        
+        '''
+        
+        
+        
+        aComment='''
+        
+        and another example: ################################################
+        
+        pool = Pool()
+        result = pool.map_async(square, range(0, 5))
+        print("main script")
+        print(result.get())
+        print("end main script") 
+        
+        ''' 
+        
+        
+        aComment='''
+
+        and another example: ################################################
+
+        try:
+            with Pool() as pool:
+                pool.apply_async(worker_process, ('son_p1', out_pipe, in_pipe))
+                pool.apply_async(worker_process, ('son_p2', out_pipe, in_pipe))
+                pool.apply_async(worker_process, ('son_p3', out_pipe, in_pipe))
+                pool.close()
+                pool.join()
+
+            while out_pipe.poll():
+                print(out_pipe.recv())
+        finally:
+            pool.terminate()
+
+        ####################################################################
+        '''
+
         
         
         print("\nonStart, start to parallel process to generatePi started.\n")
         self.txt.insert(INSERT, "\n\nonStart, start to parallel process to generatePi started.\n\n") 
         self.pbar.start(DELAY2)
         self.after(DELAY1, self.onGetValue(self.child_conn, msgs))
+    
+    
+    def onCallBack( theValue ):
+        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX CALLED BACK XXXXXXXXXXXXXXXXXXXXXXXXXXXXX") 
         
        
     def onGetValue(self, conn, msgs):
