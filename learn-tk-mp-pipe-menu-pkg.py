@@ -35,8 +35,8 @@ from tkinter import scrolledtext as st
 
 win = tk.Tk() 
 
-import multiprocessing
-from multiprocessing import Queue, Process
+import multiprocessing as mp
+from multiprocessing import Queue, Process, Pool
 import queue 
 from decimal import Decimal, getcontext
 
@@ -1430,7 +1430,8 @@ class PiCruncher(Frame):
         self.txt.insert(INSERT, "\n\nonStart, start to process to generatePi is next.\n\n") 
 
 
-        self.parent_conn, self.child_conn = multiprocessing.Pipe()
+        # self.parent_conn, self.child_conn = multiprocessing.Pipe()
+        self.parent_conn, self.child_conn = mp.Pipe()
         
         # creating new processes
         # p1 = multiprocessing.Process(target=sender, args=(parent_conn,msgs))
@@ -1441,9 +1442,61 @@ class PiCruncher(Frame):
         # self.p1 = Process(target=self.generatePi)
         # self.p1 = Process(target=self.generatePi, args=(self.queue, ))
         # self.p1 = Process(target=self.generatePi, args=(self.parent_conn, msgs ), callback=self.onCallBack )
-        self.p1 = Process(target=self.generatePi, args=(self.parent_conn, msgs ) ) 
-        self.p1.start() 
+
+        # self.p1 = Process(target=self.generatePi, args=(self.parent_conn, msgs ) ) 
+        # self.p1.start() 
         
+        # aComment='''
+        #
+        # Create pool
+        #
+        PROCESSES = 4 
+        print('Creating pool with %d processes\n' % PROCESSES) 
+        self.POOL = mp.Pool(PROCESSES) 
+        print('POOL = %s' % self.POOL) 
+        print() 
+
+        # TEST = None
+        # aComment='''
+        # MP_CALLBACK = None
+        # self.p1 = None
+        # RESULT = POOL.apply_async(count, (TEST, ), callback=MP_CALLBACK)
+        # self.p1 = self.POOL.map_async( self.generatePi, (self.parent_conn, msgs ), callback=self.callbackForPool)
+        # self.p1 = self.POOL.map_async( self.generatePi, (self.parent_conn, msgs ))
+        # print(self.p1)  
+        # print(self.p1.get())   
+        print("Instansiating the generatePi function.") 
+        self.p1 = self.POOL.map_async( self.generatePi, [1,2,3,4], callback=self.callbackForPool )
+        print("Done instansiating the generatePi function.") 
+        print(self.p1) 
+        prtVal = self.p1.get() 
+        print(  prtVal )   
+        # self.p1.start() 
+        # self.POOL.close()
+        # self.POOL.join()
+        # ''' 
+
+
+        aComment='''
+        def check_headers_parallel(self, urls, options=None, callback=None):
+        if not options:
+            options= self.options.result()
+
+        if Pool:
+            results = []
+            freeze_support()
+            pool = Pool(processes=100)
+            for url in urls:
+                result = pool.apply_async(self.check_headers, args=(url, options.get('redirects'), options), callback=callback)
+                results.append(result)
+            pool.close()
+            pool.join() 
+            return results
+        else:
+            raise Exception('no parallelism supported') 
+        
+        
+        '''
         
         aComment='''
         
@@ -1534,11 +1587,9 @@ class PiCruncher(Frame):
         
         '''
         
-        
-        
         aComment='''
         
-        and another example: ################################################
+        # and another example: ################################################
         
         pool = Pool()
         result = pool.map_async(square, range(0, 5))
@@ -1580,12 +1631,22 @@ class PiCruncher(Frame):
     def onCallBack( theValue ):
         print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX CALLED BACK XXXXXXXXXXXXXXXXXXXXXXXXXXXXX") 
         
-       
-    def onGetValue(self, conn, msgs):
+    def callbackForPool(result):
+        """This will print the result calleded via the callback."""
+    
+        if result is not None:
+            print(str(result[0]) + ' Callback Succeeded') 
+        else:
+            print("Callback Failure")
+    
         
-        # if (self.p1.is_alive()):
+    def onGetValue(self, conn, msgs):
+          print("\nonGetValue started. #################################################") 
+          print(self.p1.ready())  
 
-          while self.p1.is_alive():    
+          # if (self.p1.is_alive()):
+          # while self.p1.is_alive():    
+          while not (self.p1.ready()):    
               print("\nonGetValue finds ------------------------- generatePi Process is alive")
               self.txt.insert(INSERT, "\nonGetValue finds ---------------------- generatePi Process is alive\n") 
               # self.after(DELAY1, self.onGetValue(conn, msgs))   # self.onGetValue)
@@ -1605,10 +1666,11 @@ class PiCruncher(Frame):
         
             # try: 
           msg = "msg"
-          msg = conn.recv() 
-          print("This should be a pi: ", msg) 
+          # msg = conn.recv() 
+          # print("This should be a pi: ", msg) 
+          print("This should be a pi: ", self.p1) 
           self.txt.insert(END, "\nThis should be a pi: ")               # self.queue.get(0))
-          self.txt.insert(END, msg)               # self.queue.get(0))
+          self.txt.insert(END, self.p1)               # self.queue.get(0))
           self.txt.insert(END, "\n") 
           self.txt.insert(INSERT, "\n\nNow running onGetValue else section.\n\n") 
           print("\nNow running onGetValue else section.\n") 
@@ -1621,7 +1683,9 @@ class PiCruncher(Frame):
                 # self.txt.insert("\nqueue is PLACEKEEPER empty\n")         
 
             
-    def generatePi(self, conn, msgs):
+    def generatePi(self):
+        print("\ngeneratePi function just started.") 
+    # def generatePi(self, conn, msgs):
     # def generatePi(self, queue):
     # def generatePi(self):               self.queue, , self.parent_conn, msgs
     #                  def sender(conn, msgs):
@@ -1658,7 +1722,8 @@ class PiCruncher(Frame):
             #st.insert(tkinter.INSERT, str(portlist))
             # myvar = "the answer is {}".format(answer) 
             # myvar = "the answer is " + str(answer) 
-            insertToTxtfr = ("\nTextFrameTry02 is still alive = " + str(self.p1.is_alive())+"")   
+            # not (self.p1.ready())
+            insertToTxtfr = ("\nTextFrameTry02 is still alive = " + str(not (self.p1.ready()))+"")   
             
             # insertToTxtfr = ('TextFrameTry02 is still alive = {}'.format(self.p1.is_alive())   
             # insertToTxtfr = ('TextFrameTry02 is still alive = XXX')   
