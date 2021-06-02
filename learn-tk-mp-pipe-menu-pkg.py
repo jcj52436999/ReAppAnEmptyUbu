@@ -1466,17 +1466,29 @@ class PiCruncher(Frame):
         # print(self.p1)  
         # print(self.p1.get())   
         print("Instansiating the generatePi function.") 
-        self.p1 = self.POOL.map_async( self.generatePi, [1,2,3,4], callback=self.callbackForPool )
+      # self.p1 = self.POOL.map_async( self.generatePi, [1,2,3,4], callback=self.callbackForPool ) 
+        
+      # self.p1 = self.POOL.apply_async(func[, args[, kwds[, callback[, error_callback]]]])
+        self.p1 = self.POOL.apply_async(self.generatePi, (10,), msgs, callback=self.callbackForPool)
+        
+        
         print("Done instansiating the generatePi function.") 
+        print("The generatePi function should be running, but seems not. ") 
+        print("Printing self.p1 . ") 
         print(self.p1) 
-        prtVal = self.p1.get() 
-        print(  prtVal )   
+        print("Evaluating self.p1.get . ") 
+        # prtVal = self.p1.get() 
+        # print("And printing that value. ") 
+        # print(  prtVal )   
         # self.p1.start() 
         # self.POOL.close()
         # self.POOL.join()
         # ''' 
-
-
+        self.POOL.close() 
+        # self.POOL.join() 
+        
+        
+        
         aComment='''
         def check_headers_parallel(self, urls, options=None, callback=None):
         if not options:
@@ -1668,7 +1680,7 @@ class PiCruncher(Frame):
           msg = "msg"
           # msg = conn.recv() 
           # print("This should be a pi: ", msg) 
-          print("This should be a pi: ", self.p1) 
+          print("This should be a pi: ", self.p1)  
           self.txt.insert(END, "\nThis should be a pi: ")               # self.queue.get(0))
           self.txt.insert(END, self.p1)               # self.queue.get(0))
           self.txt.insert(END, "\n") 
@@ -1683,8 +1695,9 @@ class PiCruncher(Frame):
                 # self.txt.insert("\nqueue is PLACEKEEPER empty\n")         
 
             
-    def generatePi(self):
+    def generatePi(self, iterator, callBack):
         print("\ngeneratePi function just started.") 
+    # def generatePi(self):
     # def generatePi(self, conn, msgs):
     # def generatePi(self, queue):
     # def generatePi(self):               self.queue, , self.parent_conn, msgs
